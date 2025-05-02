@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
 import LoginPage from './pages/login/LoginPage'
 import HomePage from './pages/homepage/HomePage'
-import FestivalPage from './pages/festivals/FestivalPage'
+import FestivalsPage from './pages/festivals/FestivalsPage'
 import RegisterPage from './pages/register/RegisterPage'
 import ArtistsPage from './pages/artists/ArtistsPage'
 import MyFestivalsPage from './pages/my-festivals/MyFestivalsPage'
@@ -11,6 +11,9 @@ import PageNavigator from './components/pagenavigator/PageNavigator'
 import ProfilePage from './pages/profile/ProfilePage'
 import EditProfile from './pages/profile/EditProfile'
 import PrivateRoute from './components/privateroute/PrivateRoute'
+import FestivalItem from './pages/festivals/FestivalItem'
+import FestivalArtistsPage from './pages/festivals/FestivalArtistsPage'
+import FestivalSchedulePage from './pages/festivals/FestivalSchedulePage'
 
 function App() {
   return (
@@ -32,7 +35,13 @@ function App() {
 
 
 
-        <Route path='/festivals' element={<FestivalPage />}/>
+        <Route path='/festivals' element={<FestivalsPage />}/>
+        <Route path='/festivals/:id' element={<FestivalItem />}/>
+        <Route path='/festivals/:id/artists' element={<FestivalArtistsPage />}/>
+        <Route path='/festivals/:id/schedule' element={<FestivalSchedulePage />}/>
+
+
+
         <Route path='/artists' element={<ArtistsPage />}/>
       </Routes>
     </BrowserRouter>
