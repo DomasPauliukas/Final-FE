@@ -22,6 +22,7 @@ if (!artists) {
   return (
     <div>
       <h1>Artists</h1>
+      <Link to="/create-artist">Create new artist</Link>
       <p>List of artists will be displayed here.</p>
       {artists.map((artist) => (
         <div key={artist._id}>
