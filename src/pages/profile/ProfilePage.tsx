@@ -49,7 +49,7 @@ const ProfilePage: React.FC = () => {
     if (!loggedUser) {
         return <p>Loading user data...</p>
     }    
-    console.log(loggedUser)
+
     return (
     <div>
       <h1>Profile Page</h1>

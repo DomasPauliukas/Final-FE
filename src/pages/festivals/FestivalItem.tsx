@@ -2,8 +2,10 @@ import { Link, useParams } from "react-router-dom"
 import { Festival } from "../../types/TypesExport"
 import { useEffect, useState } from "react"
 import api from "../../components/api"
+import UserNavigator from "../../components/usernavigator/UserNavigator"
 
 const FestivalItem: React.FC = () => {
+
     const { id } = useParams()
     const [festival, setFestival] = useState<Festival | null>(null)
 
@@ -42,6 +44,9 @@ const FestivalItem: React.FC = () => {
           <button>View Festival Schedule</button>
         </Link>
       </div>
+
+
+        <UserNavigator />
     </div>
   )
 }

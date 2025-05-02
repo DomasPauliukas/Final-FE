@@ -33,6 +33,7 @@ if (!artists) {
           </div>
         </div>
       ))}
+
     </div>
   )
 }

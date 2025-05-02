@@ -2,9 +2,9 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import api from "../../components/api"
 import { Schedule, Stage } from "../../types/TypesExport"
+import UserNavigator from "../../components/usernavigator/UserNavigator"
 
 const FestivalSchedulePage: React.FC = () => {
-
   const { id } = useParams()
   const [ schedules, setSchedules ] = useState<Schedule[]>([])
   const [ stages, setStages ] = useState<Stage[]>([])
@@ -52,6 +52,8 @@ const FestivalSchedulePage: React.FC = () => {
             )}
         </div>
       ))}
+
+      <UserNavigator />
     </div>
   )
 }
