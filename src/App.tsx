@@ -15,6 +15,8 @@ import FestivalItem from './pages/festivals/FestivalItem'
 import FestivalArtistsPage from './pages/festivals/FestivalArtistsPage'
 import FestivalSchedulePage from './pages/festivals/FestivalSchedulePage'
 import ArtistItem from './pages/artists/ArtistItem'
+import CreateArtist from './pages/artists/CreateArtist'
+import EditArtist from './pages/artists/EditArtist'
 
 function App() {
   return (
@@ -45,6 +47,9 @@ function App() {
 
         <Route path='/artists' element={<ArtistsPage />}/>
         <Route path='/artists/:id' element={<ArtistItem />}/>
+
+        <Route path='/create-artist' element={<CreateArtist />}/>
+        <Route path='/edit-artist/:id' element={<EditArtist />}/>
 
 
 

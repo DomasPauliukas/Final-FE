@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Artist, Festival } from "../../types/TypesExport";
 import api from "../../components/api";
 
 const ArtistItem: React.FC = () => {
     const { id } = useParams()
+    const navigate = useNavigate()
 
     const [artist, setArtist] = useState<Artist | null>(null)
     const [festivals, setFestivals] = useState<Festival[] | null>(null)
@@ -26,10 +27,23 @@ const ArtistItem: React.FC = () => {
         return <div>Loading...</div>
     }
 
-    console.log(artist)
+    const deleteStudent = async (id: string) => {
+        try {
+            await api.delete(`/artists/${id}`)
+            navigate('/artists')
+        } catch (error) {
+            console.error("Error deleting artist:", error)
+        }
+    }
+
   return (
     <div>
         <h1>{artist.name}</h1>
+        <div>
+            <Link to={`/edit-artist/${id}`}>Edit</Link>
+            <button onClick={() => deleteStudent(id ?? '')}>Delete</button>
+        </div>
+            
         <img src={artist.image} alt={artist.name} style={{ width: '200px', height: 'auto' }} />
         <h2>{artist.name} ({artist.country})</h2>
         <p>{artist.genre}</p>
