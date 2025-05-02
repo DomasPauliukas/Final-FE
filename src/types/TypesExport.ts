@@ -16,6 +16,7 @@ export interface Artist {
     genre: string
     country: string
     image: string
+    hits: string[]
 }
 
 export interface Stage {

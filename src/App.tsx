@@ -14,6 +14,7 @@ import PrivateRoute from './components/privateroute/PrivateRoute'
 import FestivalItem from './pages/festivals/FestivalItem'
 import FestivalArtistsPage from './pages/festivals/FestivalArtistsPage'
 import FestivalSchedulePage from './pages/festivals/FestivalSchedulePage'
+import ArtistItem from './pages/artists/ArtistItem'
 
 function App() {
   return (
@@ -43,6 +44,10 @@ function App() {
 
 
         <Route path='/artists' element={<ArtistsPage />}/>
+        <Route path='/artists/:id' element={<ArtistItem />}/>
+
+
+
       </Routes>
     </BrowserRouter>
     </>

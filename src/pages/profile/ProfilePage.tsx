@@ -49,7 +49,7 @@ const ProfilePage: React.FC = () => {
     if (!loggedUser) {
         return <p>Loading user data...</p>
     }    
-    
+    console.log(loggedUser)
     return (
     <div>
       <h1>Profile Page</h1>
@@ -58,7 +58,7 @@ const ProfilePage: React.FC = () => {
         <p>Age: {loggedUser.age}</p>
         <p>Username: {loggedUser.username}</p>
         <p>Email: {loggedUser.email}</p>
-        <p>User ID: {loggedUser.userId}</p>
+        <p>User ID: {loggedUser._id}</p>
         <p>Role: {loggedUser.role}</p>
         <button onClick={logoutUser}>Logout</button>
         <NavLink to={`/profile-edit`}>Edit</NavLink>
