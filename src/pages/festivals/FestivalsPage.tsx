@@ -26,8 +26,7 @@ useEffect(() => {
         <div key={festival._id}>
           <h2>{festival.name}</h2>
           <p>{festival.description}</p>
-          <p>Start Date: {new Date(festival.startDate).toLocaleDateString()}</p>
-          <p>End Date: {new Date(festival.endDate).toLocaleDateString()}</p>
+          <p>Date: {festival.date}</p>
           <p>Location: {festival.location}</p>
           <img src={festival.image} alt={festival.name} style={{ width: '200px', height: 'auto' }} />
           <div>

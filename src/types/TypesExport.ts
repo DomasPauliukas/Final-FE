@@ -2,12 +2,11 @@ export interface Festival {
     _id: string
     name: string
     description: string
-    startDate: string
-    endDate: string
+    date: string
     location: string
     image: string
     artists: Artist[]
-    stages: string[]
+    stages: Stage[]
 }
 
 export interface Artist {
@@ -18,3 +17,19 @@ export interface Artist {
     country: string
     image: string
 }
+
+export interface Stage {
+    _id: string
+    name: string
+    capacity: number
+    festivalId: Festival
+}
+
+export interface Schedule {
+    _id: string
+    startTime: string
+    endTime: string
+    festivalId: Festival
+    artistId: Artist
+    stageId: Stage
+}   

@@ -29,9 +29,8 @@ const FestivalItem: React.FC = () => {
       <img src={festival.image} alt={festival.name} width="400" />
       <p><strong>Location:</strong> {festival.location}</p>
       <p>
-        <strong>Dates:</strong>{" "}
-        {new Date(festival.startDate).toLocaleDateString()} -{" "}
-        {new Date(festival.endDate).toLocaleDateString()}
+        <strong>Date: </strong>
+        {festival.date}
       </p>
       <p>{festival.description}</p>
 
