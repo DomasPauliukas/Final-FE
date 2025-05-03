@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { Festival } from "../../types/TypesExport"
 import { useEffect, useState } from "react"
 import api from "../../components/api"
@@ -8,7 +8,7 @@ const FestivalItem: React.FC = () => {
 
     const { id } = useParams()
     const [festival, setFestival] = useState<Festival | null>(null)
-
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchFestival = async () => {
             try {
@@ -21,6 +21,16 @@ const FestivalItem: React.FC = () => {
         fetchFestival()
     }, [id])
 
+    const deleteFestival = async (id: string) => {
+        try {
+            await api.delete(`/festivals/${id}`)
+            alert("Festival deleted successfully!")
+            navigate('/festivals')
+        } catch (error) {
+            console.error("Error deleting festival:", error)
+        }
+    }
+
     if (!festival) {
         return <p>Loading...</p>
     }
@@ -28,6 +38,11 @@ const FestivalItem: React.FC = () => {
     return (
     <div>
       <h1>{festival.name}</h1>
+      <div>
+        <Link to={`/edit-festival/${id}`}>Edit</Link>
+        <button onClick={() => deleteFestival(id ?? '')}>Delete</button>
+      </div>
+
       <img src={festival.image} alt={festival.name} width="400" />
       <p><strong>Location:</strong> {festival.location}</p>
       <p>

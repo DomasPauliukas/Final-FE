@@ -22,7 +22,7 @@ const RegisterHandler = async (event: React.FormEvent) => {
     }
 
     if (!name || !surname || !age || !username || !email || !password) {
-        alert("Please fill in all fields!")
+        alert("All fields are required!")
         return
     }
 

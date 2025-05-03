@@ -24,6 +24,15 @@ const FestivalArtistsPage: React.FC = () => {
         return <p>Loading...</p>
     }
 
+    if (!festival.artists || festival.artists.length === 0) {
+        return (
+            <div>
+                <p>No artists confirmed for this festival yet. All the information will be updated soon!</p>
+                <Link to={`/festivals/${id}`}>&larr; Back to Festival</Link>
+            </div>
+        )
+    }
+
   return (
     <div>
       <h2>Artists at {festival.name}</h2>

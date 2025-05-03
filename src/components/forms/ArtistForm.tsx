@@ -31,7 +31,7 @@ const SubmitHandler = async (event: React.FormEvent) => {
     event.preventDefault()
 
     if (!name || !country || !genre || !image || !bio || hits.length === 0) {
-        alert("Please fill in all fields!")
+        alert("All fields are required!")
         return
     }
 

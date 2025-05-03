@@ -25,7 +25,10 @@ const FestivalSchedulePage: React.FC = () => {
   }, [id])
 
   if (!stages.length) {
-    return <div>No stages confirmed for this festival yet. All the information will be updated soon!</div>;
+    return <div>
+      <p>No stages confirmed for this festival yet. All the information will be updated soon!</p>
+      <Link to={`/festivals/${id}`}>Back to Festival</Link>
+      </div>
   }
 
   return (

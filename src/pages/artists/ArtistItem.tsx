@@ -27,7 +27,7 @@ const ArtistItem: React.FC = () => {
         return <div>Loading...</div>
     }
 
-    const deleteStudent = async (id: string) => {
+    const deleteArtist = async (id: string) => {
         try {
             await api.delete(`/artists/${id}`)
             navigate('/artists')
@@ -41,7 +41,7 @@ const ArtistItem: React.FC = () => {
         <h1>{artist.name}</h1>
         <div>
             <Link to={`/edit-artist/${id}`}>Edit</Link>
-            <button onClick={() => deleteStudent(id ?? '')}>Delete</button>
+            <button onClick={() => deleteArtist(id ?? '')}>Delete</button>
         </div>
             
         <img src={artist.image} alt={artist.name} style={{ width: '200px', height: 'auto' }} />

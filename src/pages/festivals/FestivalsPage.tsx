@@ -23,6 +23,7 @@ useEffect(() => {
   return (
     <div>
       <h1>Festival Page</h1>
+      <Link to="/create-festival">Create Festival</Link>
       <p>This is the festival page.</p>
       {festivals.map((festival) => (
         <div key={festival._id}>
