@@ -43,16 +43,27 @@ const SubmitHandler = async (event: React.FormEvent) => {
         bio,
         hits
     }
+
     if (editArtistData) {
-        await api.put(`/artists/${editArtistData._id}`, newArtist)
-        alert("Artist updated successfully!")
-        navigate('/artists')
+        try {
+            await api.put(`/artists/${editArtistData._id}`, newArtist)
+            alert("Artist updated successfully!")
+            navigate(`/artists/${editArtistData._id}`)
+        }
+        catch (error) {
+            console.error("Error updating artist:", error)
+            alert("Error updating artist")
+        }
     } else {
-        await api.post(`/artists`, newArtist)
-        alert("Artist created successfully!")
-        navigate('/artists')
+        try {
+            await api.post('/artists', newArtist)
+            alert("Artist created successfully!")
+            navigate(`/artists`)
+        } catch (error) {
+            console.error("Error creating artist:", error)
+            alert("Error creating artist")
+        }
     }
-    
 }
 
   return (

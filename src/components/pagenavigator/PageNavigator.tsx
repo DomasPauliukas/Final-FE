@@ -11,6 +11,7 @@ const PageNavigator: React.FC = () => {
             <NavLink to={'/artists'}>Artists</NavLink>
 
             <NavLink to={'/stages'}>Stages</NavLink>
+            <NavLink to={'/schedules'}>Schedules</NavLink>
 
         {!user ? (
             <>

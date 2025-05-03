@@ -23,6 +23,10 @@ import StagesPage from './pages/stages/StagesPage'
 import StageItem from './pages/stages/StageItem'
 import EditStage from './pages/stages/EditStage'
 import CreateStage from './pages/stages/CreateStage'
+import SchedulesPage from './pages/schedules/SchedulesPage'
+import ScheduleItem from './pages/schedules/ScheduleItem'
+import CreateSchedule from './pages/schedules/CreateSchedule'
+import EditSchedule from './pages/schedules/EditSchedule'
 
 function App() {
   return (
@@ -64,6 +68,12 @@ function App() {
         <Route path='/stages/:id' element={<StageItem />}/>
         <Route path='/create-stage' element={<CreateStage />}/>
         <Route path='/edit-stage/:id' element={<EditStage />}/>
+
+
+        <Route path='/schedules' element={<SchedulesPage />}/>
+        <Route path='/schedules/:id' element={<ScheduleItem />}/>
+        <Route path='/create-schedule' element={<CreateSchedule />}/>
+        <Route path='/edit-schedule/:id' element={<EditSchedule />}/>
 
       </Routes>
     </BrowserRouter>

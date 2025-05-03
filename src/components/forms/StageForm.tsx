@@ -43,9 +43,6 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
             festivalId
         }
 
-
-
-
         if (editStageData) {
             try {
                 await api.put(`/stages/${editStageData._id}`, newStage)
@@ -53,6 +50,7 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
                 navigate(`/stages/${editStageData._id}`)
             } catch (error) {
                 console.error("Error updating stage:", error)
+                alert("Error updating stage")
             }
         } else {
             try {
@@ -61,6 +59,7 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
                 navigate(`/stages`)
             } catch (error) {
                 console.error("Error creating stage:", error)
+                alert("Error creating stage")
             }
         }
     }

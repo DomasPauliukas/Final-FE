@@ -22,7 +22,6 @@ const StagesPage: React.FC = () => {
         return <div>Loading...</div>
     }
 
-    console.log(stages)
   return (
     <div>
       <h1>Stages Page</h1>

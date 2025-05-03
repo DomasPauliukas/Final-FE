@@ -1,0 +1,50 @@
+import { useEffect, useState } from "react"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { Schedule } from "../../types/TypesExport"
+import api from "../../components/api"
+
+const ScheduleItem: React.FC = () => {
+    const { id } = useParams()
+    const navigate = useNavigate()
+    const [schedule, setSchedule] = useState<Schedule | null>(null)
+
+    useEffect(() => {
+      const fetchSchedule = async () => {
+        try {
+          const res = await api.get(`/schedules/${id}`)
+          setSchedule(res.data)
+        } catch (error) {
+          console.error("Error fetching schedule:", error)
+        }
+      }
+        fetchSchedule() 
+    }, [id])
+
+    const deleteSchedule = async (id: string) => {
+        try {
+            await api.delete(`/schedules/${id}`)
+            navigate('/schedules')
+        } catch (error) {
+            console.error("Error deleting artist:", error)
+        }
+    }
+
+    if (!schedule) {
+      return <div>Loading...</div>
+    }
+    console.log(schedule)
+  return (
+    <div>
+      <h1>Schedule Item</h1>
+      <p>This is a schedule item component.</p>
+        <h2>Festival: <Link to={`/festivals/${schedule.festivalId._id}`}>{schedule.festivalId.name}</Link></h2>
+        <p>Stage: <Link to={`/stages/${schedule.stageId._id}`}>{schedule.stageId.name}</Link></p>
+        <p>Artist: <Link to={`/artists/${schedule.artistId._id}`}>{schedule.artistId.name}</Link></p>
+        <p>Time: {schedule.startTime} - {schedule.endTime}</p>
+        <Link to={`/edit-schedule/${id}`}>Edit</Link>
+        <button onClick={() => deleteSchedule(id ?? '')}>Delete</button>
+    </div>
+  )
+}
+
+export default ScheduleItem
