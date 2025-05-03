@@ -18,7 +18,6 @@ if (!artists) {
     return <div>Loading...</div>
   }
 
-  console.log(artists)
   return (
     <div>
       <h1>Artists</h1>

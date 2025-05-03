@@ -44,14 +44,25 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
         }
 
         if (editFestivalData) {
+            try {
                 await api.put(`/festivals/${editFestivalData._id}`, newFestival)
                 alert("Festival updated successfully!")
                 navigate(`/festivals/${editFestivalData._id}`)
-            } else {
-                await api.post(`/festivals`, newFestival)
-                alert("Festival created successfully!")
-                navigate('/festivals')
             }
+            catch (error) {
+                console.error("Error updating festival:", error)
+                alert("Error updating festival")
+            }
+        } else {
+            try {
+                await api.post('/festivals', newFestival)
+                alert("Festival created successfully!")
+                navigate(`/festivals`)
+            } catch (error) {
+                console.error("Error creating festival:", error)
+                alert("Error creating festival")
+            }
+        }
     }
     
   return (
