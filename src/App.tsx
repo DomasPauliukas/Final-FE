@@ -19,6 +19,10 @@ import CreateArtist from './pages/artists/CreateArtist'
 import EditArtist from './pages/artists/EditArtist'
 import CreateFestival from './pages/festivals/CreateFestival'
 import EditFestival from './pages/festivals/EditFestival'
+import StagesPage from './pages/stages/StagesPage'
+import StageItem from './pages/stages/StageItem'
+import EditStage from './pages/stages/EditStage'
+import CreateStage from './pages/stages/CreateStage'
 
 function App() {
   return (
@@ -56,6 +60,10 @@ function App() {
         <Route path='/edit-artist/:id' element={<EditArtist />}/>
 
 
+        <Route path='/stages' element={<StagesPage />} />
+        <Route path='/stages/:id' element={<StageItem />}/>
+        <Route path='/create-stage' element={<CreateStage />}/>
+        <Route path='/edit-stage/:id' element={<EditStage />}/>
 
       </Routes>
     </BrowserRouter>
