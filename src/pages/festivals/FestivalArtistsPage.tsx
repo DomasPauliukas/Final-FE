@@ -42,7 +42,7 @@ const FestivalArtistsPage: React.FC = () => {
         {festival.artists.map((artist) => (
           <div key={artist._id} style={{ marginBottom: "20px" }}>
             <img src={artist.image} alt={artist.name} style={{ width: '200px', height: 'auto' }} />
-            <h3>{artist.name}</h3>
+            <h3><Link to={`/artists/${artist._id}`}>{artist.name}</Link></h3>
             <p><strong>Genre:</strong> {artist.genre}</p>
             <p>{artist.bio}</p>
             <p><strong>Country:</strong> {artist.country}</p>

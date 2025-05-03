@@ -34,3 +34,18 @@ export interface Schedule {
     artistId: Artist
     stageId: Stage
 }   
+
+export interface User {
+    _id: string
+    username: string
+    email: string
+    password: string
+    role: string
+    name: string
+    surname: string
+    age: number
+    tickets: string[]
+}
+
+
+

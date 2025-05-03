@@ -27,6 +27,7 @@ import SchedulesPage from './pages/schedules/SchedulesPage'
 import ScheduleItem from './pages/schedules/ScheduleItem'
 import CreateSchedule from './pages/schedules/CreateSchedule'
 import EditSchedule from './pages/schedules/EditSchedule'
+import UsersPage from './pages/users/UsersPage'
 
 function App() {
   return (
@@ -45,7 +46,7 @@ function App() {
           <Route path='/my-festivals' element={<MyFestivalsPage />}/>
         </Route>
 
-
+        <Route path='/users' element={<UsersPage />}/>
 
 
         <Route path='/festivals' element={<FestivalsPage />}/>

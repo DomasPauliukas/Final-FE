@@ -44,11 +44,18 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
     const submitHandler = async (event: React.FormEvent) => {
         event.preventDefault()
 
+        const selectedStage = stages.find((stage) => stage._id === stageId)
+        if (!selectedStage) {
+            alert("Stage not found")
+            return
+        }
+
         const newSchedule = {
             artistId,
             stageId,
             startTime,
             endTime,
+            festivalId: selectedStage.festivalId._id,
         }
 
         if (editScheduleData) {
@@ -79,7 +86,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
       <form onSubmit={submitHandler}>
         <div className="form-control">
             <label htmlFor="artist">Artist: </label>
-            <select id="artist" name="artistId" onChange={(event) => setArtistId(event.target.value)} required>
+            <select id="artist" name="artistId" value={artistId} onChange={(event) => setArtistId(event.target.value)} required>
                 {artist.map((artist) => (
                 <option key={artist._id} value={artist._id}>
                     {artist.name}
@@ -89,7 +96,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
         </div>
         <div className="form-control">
             <label htmlFor="stage">Stage: </label>
-            <select id="stage" name="stageId" onChange={(event) => setStageId(event.target.value)} required>
+            <select id="stage" name="stageId" value={stageId} onChange={(event) => setStageId(event.target.value)} required>
                 {stages.map((stage) => (
                 <option key={stage._id} value={stage._id}>
                     {stage.name} ({stage.festivalId.name})
@@ -100,9 +107,10 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
         <div className="form-control">
             <label htmlFor="startTime">Start Time: </label>
             <input 
-                type="datetime-local" 
+                type="text" 
                 id="startTime" 
                 name="startTime" 
+                value={startTime}
                 onChange={(event) => setStartTime(event.target.value)} 
                 placeholder="6 PM"
                 required 
@@ -111,16 +119,16 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
         <div className="form-control">
             <label htmlFor="endTime">End Time: </label>
             <input 
-                type="datetime-local" 
-                id="endTime" 
+                type="text" 
                 name="endTime" 
+                value={endTime}
                 onChange={(event) => setEndTime(event.target.value)} 
                 placeholder="7 PM"
                 required 
                 />
         </div>
 
-        <button type="submit">Create Schedule</button>
+        <button type="submit">{editScheduleData ? 'Edit' : 'Create'}</button>
       </form>
     </div>
   )
