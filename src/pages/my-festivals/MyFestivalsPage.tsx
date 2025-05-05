@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import api from "../../components/api"
 import { Ticket } from "../../types/TypesExport"
+import { Link } from "react-router-dom"
 
 const MyFestivalsPage: React.FC = () => {
   const [myTickets, setMyTickets] = useState<Ticket[]>([])
@@ -17,8 +18,6 @@ const MyFestivalsPage: React.FC = () => {
     fetchMyTickets()
   }, [])
 
-  console.log(myTickets)
-
   if (myTickets.length === 0) {
     return <p>You have no tickets.</p>
   }
@@ -32,7 +31,7 @@ const MyFestivalsPage: React.FC = () => {
       <h1>My Festivals</h1>
       {myTickets.map((myTicket) => (
         <div key={myTicket._id} style={{ border: "1px solid #ccc", padding: "10px", marginBottom: "10px" }}>
-          <h3>{myTicket.festivalId.name}</h3>
+          <h3><Link to={`/festivals/${myTicket.festivalId._id}`}>{myTicket.festivalId.name}</Link></h3>
           <p><strong>Location:</strong> {myTicket.festivalId.location}</p>
           <p><strong>Date:</strong> {myTicket.festivalId.date}</p>
           <p><strong>Ticket Type:</strong> {myTicket.ticketType}</p>

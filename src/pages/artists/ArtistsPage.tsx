@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 
 const ArtistsPage: React.FC = () => {
   const [artists, setArtists] = useState<Artist[] | null>(null)
+  const [searchArtist, setSearchArtist] = useState<string>('')
 
   useEffect(() => {
     const fetchArtists = async () => {
@@ -21,9 +22,18 @@ if (!artists) {
   return (
     <div>
       <h1>Artists</h1>
+      <input
+          type="text"
+          placeholder="Search artist by name..."
+          value={searchArtist}
+          onChange={(event) => setSearchArtist(event.target.value)}
+          style={{ marginBottom: '20px', padding: '8px', width: '100%' }}
+        />
       <Link to="/create-artist">Create new artist</Link>
       <p>List of artists will be displayed here.</p>
-      {artists.map((artist) => (
+      {artists
+      .filter((artist) => artist.name.toLowerCase().includes(searchArtist.toLowerCase()))
+      .map((artist) => (
         <div key={artist._id}>
           <img src={artist.image} alt={artist.name} style={{ width: '200px', height: 'auto' }} />
           <h2>{artist.name} ({artist.country})</h2>
