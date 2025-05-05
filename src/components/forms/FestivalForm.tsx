@@ -8,13 +8,14 @@ type FestivalFormProps = {
 }
 
 const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
-
     const navigate = useNavigate()
     const [name, setName] = useState<string>('')
     const [location, setLocation] = useState<string>('')
     const [date, setDate] = useState<string>('')
     const [image, setImage] = useState<string>('')
     const [description, setDescription] = useState<string>('')
+    const [regularPrice, setRegularPrice] = useState<number>(0)
+    const [vipPrice, setVipPrice] = useState<number>(0)
 
     useEffect(() => {
         if (editFestivalData) {
@@ -23,6 +24,8 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
             setDate(editFestivalData.date)
             setImage(editFestivalData.image)
             setDescription(editFestivalData.description)
+            setRegularPrice(editFestivalData.regularPrice)
+            setVipPrice(editFestivalData.vipPrice)
         }
     }
     , [editFestivalData])
@@ -40,7 +43,9 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
             location,
             date,
             image,
-            description
+            description,
+            regularPrice,
+            vipPrice
         }
 
         if (editFestivalData) {
@@ -119,6 +124,26 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
                 onChange={(event) => setDescription(event.target.value)} 
                 required
             ></textarea>
+        </div>
+        <div className="form-control">
+            <label htmlFor="regularPrice">Regular Price: </label>
+            <input 
+                type="number" 
+                id="regularPrice" 
+                value={regularPrice} 
+                onChange={(event) => setRegularPrice(Number(event.target.value))} 
+                required
+            />
+        </div>
+        <div className="form-control">
+            <label htmlFor="vipPrice">VIP Price: </label>
+            <input
+                type="number" 
+                id="vipPrice" 
+                value={vipPrice} 
+                onChange={(event) => setVipPrice(Number(event.target.value))} 
+                required
+            />
         </div>
 
             <button type="submit">{editFestivalData ? 'Edit': 'Create'}</button>

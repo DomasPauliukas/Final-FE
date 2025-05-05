@@ -9,6 +9,12 @@ const FestivalItem: React.FC = () => {
     const { id } = useParams()
     const [festival, setFestival] = useState<Festival | null>(null)
     const navigate = useNavigate()
+
+    const [showTicketForm, setShowTicketForm] = useState(false)
+    const [ticketType, setTicketType] = useState('Regular')
+    const [quantity, setQuantity] = useState(1)
+    const [totalPrice, setTotalPrice] = useState<number>(0)
+
     useEffect(() => {
         const fetchFestival = async () => {
             try {
@@ -20,6 +26,18 @@ const FestivalItem: React.FC = () => {
         }
         fetchFestival()
     }, [id])
+
+    useEffect(() => {
+      if (!festival) return
+
+      let totalPrice = 0
+      if (ticketType === 'VIP') {
+          totalPrice = festival.vipPrice * quantity
+      } else if (ticketType === 'Regular') {
+          totalPrice = festival.regularPrice * quantity
+      }
+      setTotalPrice(totalPrice)
+    }, [ticketType, quantity, festival])
 
     const deleteFestival = async (id: string) => {
         try {
@@ -34,6 +52,25 @@ const FestivalItem: React.FC = () => {
     if (!festival) {
         return <p>Loading...</p>
     }
+
+    const submitHandler = async (event: React.FormEvent) => {
+      event.preventDefault();
+
+      const newTicket = {
+          festivalId: id,
+          ticketType,
+          quantity,
+      }
+
+      try {
+          await api.post('/tickets/buy', newTicket);
+          alert("Ticket purchased successfully!");
+          setShowTicketForm(false); // Hide the form after successful purchase
+      } catch (error) {
+          console.error("Error buying ticket", error);
+          alert("Failed to purchase ticket");
+      }
+  }
 
     return (
     <div>
@@ -59,6 +96,42 @@ const FestivalItem: React.FC = () => {
           <button>View Festival Schedule</button>
         </Link>
       </div>
+
+      {!showTicketForm && (
+          <button onClick={() => setShowTicketForm(true)} style={{ marginTop: "20px" }}>
+              Buy Ticket
+          </button>
+      )}
+
+      {showTicketForm && (
+          <form onSubmit={submitHandler} style={{ marginTop: "20px" }}>
+              <div>
+                  <label>Ticket Type: </label>
+                  <select value={ticketType} onChange={(event) => setTicketType(event.target.value)}>
+                      <option value="Regular">Regular</option>
+                      <option value="VIP">VIP</option>
+                  </select>
+              </div>
+
+              <div>
+                  <label>Quantity: </label>
+                  <input
+                      type="number"
+                      min="1"
+                      value={quantity}
+                      onChange={(event) => setQuantity(Number(event.target.value))}
+                  />
+              </div>
+              {ticketType && (
+                <>
+                <p><strong>Price per Ticket:</strong> {ticketType === 'VIP' ? festival.vipPrice : festival.regularPrice} EUR</p>
+                <p><strong>Total Price:</strong> {totalPrice} EUR</p>
+                </>
+              )}
+
+              <button type="submit">Buy Ticket</button>
+          </form>
+      )}
 
 
         <UserNavigator />

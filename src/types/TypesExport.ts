@@ -5,6 +5,8 @@ export interface Festival {
     date: string
     location: string
     image: string
+    regularPrice: number
+    vipPrice: number
     artists: Artist[]
     stages: Stage[]
 }
