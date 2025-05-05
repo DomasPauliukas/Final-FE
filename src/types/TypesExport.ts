@@ -49,5 +49,18 @@ export interface User {
     tickets: string[]
 }
 
+export interface Ticket {
+    _id: string
+    festivalId: Festival
+    userId: User
+    ticketType: 'VIP' | 'Regular'
+    quantity: number
+    price: number
+    purchaseAt: string
+}
+
+
+
+
 
 

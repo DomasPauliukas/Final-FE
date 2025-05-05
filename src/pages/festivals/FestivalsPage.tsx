@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 import UserNavigator from "../../components/usernavigator/UserNavigator"
 
 const FestivalsPage: React.FC = () => {
-
   const [festivals, setFestivals] = useState<Festival[]>([])
 
 useEffect(() => {
