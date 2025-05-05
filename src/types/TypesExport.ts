@@ -46,7 +46,7 @@ export interface User {
     name: string
     surname: string
     age: number
-    tickets: string[]
+    tickets: Ticket[]
 }
 
 export interface Ticket {

@@ -65,7 +65,8 @@ const FestivalItem: React.FC = () => {
       try {
           await api.post('/tickets/buy', newTicket);
           alert("Ticket purchased successfully!");
-          setShowTicketForm(false); // Hide the form after successful purchase
+          setShowTicketForm(false)
+          navigate('/my-festivals')
       } catch (error) {
           console.error("Error buying ticket", error);
           alert("Failed to purchase ticket");
