@@ -28,17 +28,24 @@ import ScheduleItem from './pages/schedules/ScheduleItem'
 import CreateSchedule from './pages/schedules/CreateSchedule'
 import EditSchedule from './pages/schedules/EditSchedule'
 import UsersPage from './pages/users/UsersPage'
+import { useAuth } from './context/AuthContext'
+import AdminRoute from './components/privateroute/AdminRoute'
 
 function App() {
+  const { user } = useAuth()
   return (
     <>
     <BrowserRouter>
       <PageNavigator />
       <Routes>
         <Route index element={<HomePage />}/>
-
-        <Route path='/login' element={<LoginPage />}/>
-        <Route path='/register' element={<RegisterPage />}/>
+      
+      {!user && 
+        <>
+          <Route path='/login' element={<LoginPage />}/>
+          <Route path='/register' element={<RegisterPage />}/>
+        </>
+      }
 
         <Route element={<PrivateRoute />}>
           <Route path='/profile' element={<ProfilePage />}/>
@@ -46,36 +53,31 @@ function App() {
           <Route path='/my-festivals' element={<MyFestivalsPage />}/>
         </Route>
 
-        <Route path='/users' element={<UsersPage />}/>
-
+        <Route element={<AdminRoute />}>
+          <Route path='/users' element={<UsersPage />}/>
+          <Route path='/create-festival' element={<CreateFestival />}/>
+          <Route path='/edit-festival/:id' element={<EditFestival />}/>
+          <Route path='/create-artist' element={<CreateArtist />}/>
+          <Route path='/edit-artist/:id' element={<EditArtist />}/>
+          <Route path='/create-stage' element={<CreateStage />}/>
+          <Route path='/edit-stage/:id' element={<EditStage />}/>
+          <Route path='/create-schedule' element={<CreateSchedule />}/>
+          <Route path='/edit-schedule/:id' element={<EditSchedule />}/>
+        </Route>
 
         <Route path='/festivals' element={<FestivalsPage />}/>
         <Route path='/festivals/:id' element={<FestivalItem />}/>
         <Route path='/festivals/:id/artists' element={<FestivalArtistsPage />}/>
         <Route path='/festivals/:id/schedule' element={<FestivalSchedulePage />}/>
 
-        <Route path='/create-festival' element={<CreateFestival />}/>
-        <Route path='/edit-festival/:id' element={<EditFestival />}/>
-
-
         <Route path='/artists' element={<ArtistsPage />}/>
         <Route path='/artists/:id' element={<ArtistItem />}/>
 
-        <Route path='/create-artist' element={<CreateArtist />}/>
-        <Route path='/edit-artist/:id' element={<EditArtist />}/>
-
-
         <Route path='/stages' element={<StagesPage />} />
         <Route path='/stages/:id' element={<StageItem />}/>
-        <Route path='/create-stage' element={<CreateStage />}/>
-        <Route path='/edit-stage/:id' element={<EditStage />}/>
-
 
         <Route path='/schedules' element={<SchedulesPage />}/>
         <Route path='/schedules/:id' element={<ScheduleItem />}/>
-        <Route path='/create-schedule' element={<CreateSchedule />}/>
-        <Route path='/edit-schedule/:id' element={<EditSchedule />}/>
-
       </Routes>
     </BrowserRouter>
     </>

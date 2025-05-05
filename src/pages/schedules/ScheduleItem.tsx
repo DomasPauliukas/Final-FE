@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { Schedule } from "../../types/TypesExport"
 import api from "../../components/api"
+import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
 
 const ScheduleItem: React.FC = () => {
     const { id } = useParams()
@@ -41,8 +42,10 @@ const ScheduleItem: React.FC = () => {
         <p>Stage: <Link to={`/stages/${schedule.stageId._id}`}>{schedule.stageId.name}</Link></p>
         <p>Artist: <Link to={`/artists/${schedule.artistId._id}`}>{schedule.artistId.name}</Link></p>
         <p>Time: {schedule.startTime} - {schedule.endTime}</p>
-        <Link to={`/edit-schedule/${id}`}>Edit</Link>
-        <button onClick={() => deleteSchedule(id ?? '')}>Delete</button>
+        <OnlyAdmin>
+          <Link to={`/edit-schedule/${id}`}>Edit</Link>
+          <button onClick={() => deleteSchedule(id ?? '')}>Delete</button>
+        </OnlyAdmin>
     </div>
   )
 }

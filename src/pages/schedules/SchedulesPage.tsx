@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Schedule } from "../../types/TypesExport"
 import api from "../../components/api"
 import { Link } from "react-router-dom"
+import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
 
 const SchedulesPage: React.FC = () => {
     const [schedules, setSchedules] = useState<Schedule[] | null>(null)
@@ -27,8 +28,9 @@ const SchedulesPage: React.FC = () => {
     <div>
       <h1>Schedules</h1>
       <p>Schedules page content goes here.</p>
-
+    <OnlyAdmin>
       <Link to={`/create-schedule`}>Create</Link>
+    </OnlyAdmin>
 
         {schedules.map((schedule) => (
             <div key={schedule._id}>

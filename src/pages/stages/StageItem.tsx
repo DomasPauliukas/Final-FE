@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Stage } from "../../types/TypesExport";
 import api from "../../components/api";
+import OnlyAdmin from "../../components/privateroute/OnlyAdmin";
 
 const StageItem: React.FC = () => {
     const { id } = useParams()
@@ -41,8 +42,12 @@ const StageItem: React.FC = () => {
       <h2>Stage Item</h2>
       <p>This is a placeholder for the stage item component.</p>
       <h3>{stage.name}</h3>
-      <Link to={`/edit-stage/${stage._id}`}>Edit</Link>
-      <button onClick={() => deleteStage(id ?? '')}>Delete</button>
+      
+      <OnlyAdmin>
+        <Link to={`/edit-stage/${stage._id}`}>Edit</Link>
+        <button onClick={() => deleteStage(id ?? '')}>Delete</button>
+      </OnlyAdmin>
+
         <p>Capacity: {stage.capacity}</p>
         <p>Festival: <Link to={`/festivals/${stage.festivalId._id}`}>{stage.festivalId.name}</Link></p>
         <p>Festival Date & Location: {stage.festivalId.date} - {stage.festivalId.location}</p>

@@ -3,13 +3,15 @@ import { Festival } from "../../types/TypesExport"
 import { useEffect, useState } from "react"
 import api from "../../components/api"
 import UserNavigator from "../../components/usernavigator/UserNavigator"
+import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
+import { useAuth } from "../../context/AuthContext"
 
 const FestivalItem: React.FC = () => {
 
     const { id } = useParams()
     const [festival, setFestival] = useState<Festival | null>(null)
     const navigate = useNavigate()
-
+    const { user } = useAuth()
     const [showTicketForm, setShowTicketForm] = useState(false)
     const [ticketType, setTicketType] = useState('Regular')
     const [quantity, setQuantity] = useState(1)
@@ -76,10 +78,12 @@ const FestivalItem: React.FC = () => {
     return (
     <div>
       <h1>{festival.name}</h1>
-      <div>
-        <Link to={`/edit-festival/${id}`}>Edit</Link>
-        <button onClick={() => deleteFestival(id ?? '')}>Delete</button>
-      </div>
+      <OnlyAdmin>
+        <div>
+            <Link to={`/edit-festival/${id}`}>Edit</Link>
+            <button onClick={() => deleteFestival(id ?? '')}>Delete</button>
+        </div>
+      </OnlyAdmin>
 
       <img src={festival.image} alt={festival.name} width="400" />
       <p><strong>Location:</strong> {festival.location}</p>
@@ -98,7 +102,7 @@ const FestivalItem: React.FC = () => {
         </Link>
       </div>
 
-      {!showTicketForm && (
+      {!showTicketForm && user && (
           <button onClick={() => setShowTicketForm(true)} style={{ marginTop: "20px" }}>
               Buy Ticket
           </button>

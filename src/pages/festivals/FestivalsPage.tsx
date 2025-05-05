@@ -3,6 +3,7 @@ import { Festival } from "../../types/TypesExport"
 import api from "../../components/api"
 import { Link } from "react-router-dom"
 import UserNavigator from "../../components/usernavigator/UserNavigator"
+import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
 
 const FestivalsPage: React.FC = () => {
   const [festivals, setFestivals] = useState<Festival[]>([])
@@ -22,7 +23,9 @@ useEffect(() => {
   return (
     <div>
       <h1>Festival Page</h1>
-      <Link to="/create-festival">Create Festival</Link>
+      <OnlyAdmin>
+        <Link to="/create-festival">Create Festival</Link>
+      </OnlyAdmin>
       <p>This is the festival page.</p>
       {festivals.map((festival) => (
         <div key={festival._id}>
