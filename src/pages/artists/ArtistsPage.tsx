@@ -2,7 +2,6 @@ import { useEffect, useState } from "react"
 import { Artist } from "../../types/TypesExport"
 import api from "../../components/api"
 import { Link } from "react-router-dom"
-import AdminRoute from "../../components/privateroute/AdminRoute"
 import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
 
 const ArtistsPage: React.FC = () => {
@@ -34,6 +33,7 @@ if (!artists) {
       <OnlyAdmin>
         <Link to="/create-artist">Create new artist</Link>
       </OnlyAdmin>
+      
       <p>List of artists will be displayed here.</p>
       {artists
       .filter((artist) => artist.name.toLowerCase().includes(searchArtist.toLowerCase()))

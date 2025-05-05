@@ -26,6 +26,7 @@ useEffect(() => {
       <OnlyAdmin>
         <Link to="/create-festival">Create Festival</Link>
       </OnlyAdmin>
+      
       <p>This is the festival page.</p>
       {festivals.map((festival) => (
         <div key={festival._id}>
