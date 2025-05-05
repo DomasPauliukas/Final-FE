@@ -8,7 +8,6 @@ type FestivalFormProps = {
 }
 
 const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
-
     const navigate = useNavigate()
     const [name, setName] = useState<string>('')
     const [location, setLocation] = useState<string>('')
