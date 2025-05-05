@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Stage } from "../../types/TypesExport"
 import api from "../../components/api"
 import { Link } from "react-router-dom"
+import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
 
 const StagesPage: React.FC = () => {
     const [stages, setStages] = useState<Stage[] | null>(null)
@@ -25,7 +26,9 @@ const StagesPage: React.FC = () => {
   return (
     <div>
       <h1>Stages Page</h1>
-      <Link to="/create-stage">Create Stage</Link>
+      <OnlyAdmin>
+        <Link to="/create-stage">Create Stage</Link>
+      </OnlyAdmin>
       <p>This is the Stages page.</p>
 
       {stages.map((stage) => (

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Artist, Festival } from "../../types/TypesExport";
 import api from "../../components/api";
+import OnlyAdmin from "../../components/privateroute/OnlyAdmin";
 
 const ArtistItem: React.FC = () => {
     const { id } = useParams()
@@ -39,10 +40,12 @@ const ArtistItem: React.FC = () => {
   return (
     <div>
         <h1>{artist.name}</h1>
-        <div>
-            <Link to={`/edit-artist/${id}`}>Edit</Link>
-            <button onClick={() => deleteArtist(id ?? '')}>Delete</button>
-        </div>
+        <OnlyAdmin>
+            <div>
+                <Link to={`/edit-artist/${id}`}>Edit</Link>
+                <button onClick={() => deleteArtist(id ?? '')}>Delete</button>
+            </div>
+        </OnlyAdmin>
             
         <img src={artist.image} alt={artist.name} style={{ width: '200px', height: 'auto' }} />
         <h2>{artist.name} ({artist.country})</h2>

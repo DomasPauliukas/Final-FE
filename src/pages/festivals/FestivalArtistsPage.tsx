@@ -28,7 +28,7 @@ const FestivalArtistsPage: React.FC = () => {
         return (
             <div>
                 <p>No artists confirmed for this festival yet. All the information will be updated soon!</p>
-                <Link to={`/festivals/${id}`}>&larr; Back to Festival</Link>
+                <Link to={`/festivals/${id}`}>Back to Festival</Link>
             </div>
         )
     }
@@ -36,7 +36,7 @@ const FestivalArtistsPage: React.FC = () => {
   return (
     <div>
       <h2>Artists at {festival.name}</h2>
-      <Link to={`/festivals/${id}`}>&larr; Back to Festival</Link>
+      <Link to={`/festivals/${id}`}>Back to Festival</Link>
 
       <div>
         {festival.artists.map((artist) => (

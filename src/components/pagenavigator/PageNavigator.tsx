@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom"
 import './PageNavigator.css'
 import { useAuth } from "../../context/AuthContext"
+import OnlyAdmin from "../privateroute/OnlyAdmin"
 
 const PageNavigator: React.FC = () => {
     const { user } = useAuth()
@@ -12,8 +13,10 @@ const PageNavigator: React.FC = () => {
 
             <NavLink to={'/stages'}>Stages</NavLink>
             <NavLink to={'/schedules'}>Schedules</NavLink>
-
+            
+        <OnlyAdmin>
             <NavLink to={'/users'}>Users</NavLink>
+        </OnlyAdmin>
 
         {!user ? (
             <>
