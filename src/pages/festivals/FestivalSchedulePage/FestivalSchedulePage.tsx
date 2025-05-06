@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import api from "../../../components/api"
-import { Schedule, Stage } from "../../../types/TypesExport"
+import { Festival, Schedule, Stage } from "../../../types/TypesExport"
 import UserNavigator from "../../../components/usernavigator/UserNavigator"
 
 const timeOrder: { [key: string]: number } = {
@@ -35,15 +35,17 @@ const FestivalSchedulePage: React.FC = () => {
   const { id } = useParams()
   const [ schedules, setSchedules ] = useState<Schedule[]>([])
   const [ stages, setStages ] = useState<Stage[]>([])
+  const [festival, setFestival] = useState<Festival | null>(null)
 
   useEffect(() => {
     const fetchStagesAndSchedule = async () => {
       try{
         const res = await api.get(`/schedules/festival/${id}`)
-        
         const res2 = await api.get(`stages/festival/${id}`)
+        const res3 = await api.get(`/festivals/${id}`)
         setSchedules(res.data)
         setStages(res2.data)
+        setFestival(res3.data)
       } catch (error) {
         console.error("Error fetching festival stages and schedule:", error)
       }
@@ -60,7 +62,7 @@ const FestivalSchedulePage: React.FC = () => {
 
   return (
 <div>
-      <h2>Festival Schedule</h2>
+      <h2>{festival ? festival.name + ' Schedule' : 'Festival Schedule'}</h2>
       <Link to={`/festivals/${id}`}>Back to Festival</Link>
 
       {stages.map((stage) => (

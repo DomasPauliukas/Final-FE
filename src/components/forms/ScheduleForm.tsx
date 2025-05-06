@@ -28,6 +28,14 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
                 const res2 = await api.get('/stages')
                 setArtist(res.data)
                 setStages(res2.data)
+
+                if (!editScheduleData && res.data.length > 0) {
+                    setArtistId(res.data[0]._id)
+                  }
+            
+                  if (!editScheduleData && res2.data.length > 0) {
+                    setStageId(res2.data[0]._id)
+                  }
             } catch (error) {
                 console.error("Error fetching artists:", error)
             }

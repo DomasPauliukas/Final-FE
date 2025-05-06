@@ -46,7 +46,7 @@ const SchedulesPage: React.FC = () => {
           <div key={schedule._id} className={styles.scheduleCard}>
             <h3>{schedule.festivalId.name}</h3>
             <p><strong>Stage:</strong> {schedule.stageId.name}</p>
-            <p><strong>Artist:</strong> {schedule.artistId.name}</p>
+            <p><strong>Artist:</strong>{schedule.artistId ? schedule.artistId.name : 'Unknown Artist'}</p>
             <p><strong>Time:</strong> {schedule.startTime} - {schedule.endTime}</p>
             <Link to={`/schedules/${schedule._id}`}>More details</Link>
           </div>
