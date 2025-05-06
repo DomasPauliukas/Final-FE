@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
-import { Ticket, User } from "../../types/TypesExport"
+import { User } from "../../types/TypesExport"
 import api from "../../components/api"
+import { useNotification } from "../../context/ToastifyContext"
 
 const UsersPage: React.FC = () => {
     const [users, setUsers] = useState<User[] | null>(null)
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -21,8 +23,10 @@ const UsersPage: React.FC = () => {
         try {
             await api.delete(`/users/${id}`)
             setUsers((prevUsers) => prevUsers?.filter((user) => user._id !== id) || null)
+            showSuccess("User deleted successfully")
         } catch (error) {
             console.error("Error deleting user:", error)
+            showError("Error deleting user")
         }
     }
 
@@ -31,8 +35,10 @@ const UsersPage: React.FC = () => {
         await api.delete(`/tickets/${ticketId}`)
         const res = await api.get('/users')
         setUsers(res.data)
+        showSuccess("Ticket refunded successfully")
       } catch (error) {
         console.error("Error deleting ticket:", error)
+        showError("Error deleting ticket")
       }
     }
 

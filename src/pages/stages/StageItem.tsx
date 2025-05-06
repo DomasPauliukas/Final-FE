@@ -3,11 +3,13 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Stage } from "../../types/TypesExport";
 import api from "../../components/api";
 import OnlyAdmin from "../../components/privateroute/OnlyAdmin";
+import { useNotification } from "../../context/ToastifyContext";
 
 const StageItem: React.FC = () => {
     const { id } = useParams()
     const navigate = useNavigate()  
     const [stage, setStage] = useState<Stage | null>(null)
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
         const fetchStage = async () => {
@@ -24,10 +26,11 @@ const StageItem: React.FC = () => {
     const deleteStage = async (id: string) => {
         try {
             await api.delete(`/stages/${id}`)
-            alert("Stage deleted successfully!")
+            showSuccess("Stage deleted successfully")
             navigate('/stages')
         } catch (error) {
             console.error("Error deleting stage:", error)
+            showError("Error deleting stage")
         }
     }
 

@@ -3,11 +3,13 @@ import { Link, useNavigate, useParams } from "react-router-dom"
 import { Schedule } from "../../types/TypesExport"
 import api from "../../components/api"
 import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
+import { useNotification } from "../../context/ToastifyContext"
 
 const ScheduleItem: React.FC = () => {
     const { id } = useParams()
     const navigate = useNavigate()
     const [schedule, setSchedule] = useState<Schedule | null>(null)
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
       const fetchSchedule = async () => {
@@ -24,9 +26,11 @@ const ScheduleItem: React.FC = () => {
     const deleteSchedule = async (id: string) => {
         try {
             await api.delete(`/schedules/${id}`)
+            showSuccess("Schedule deleted successfully")
             navigate('/schedules')
         } catch (error) {
             console.error("Error deleting artist:", error)
+            showError("Error deleting artist")
         }
     }
 

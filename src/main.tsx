@@ -3,12 +3,15 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { AuthProvider } from './context/AuthContext.tsx'
+import { NotificationProvider } from './context/ToastifyContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <AuthProvider>
-    <App />
-    </AuthProvider>
+    <NotificationProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </NotificationProvider>
   </StrictMode>,
 )
 

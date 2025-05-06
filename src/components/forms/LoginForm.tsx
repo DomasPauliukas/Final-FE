@@ -2,11 +2,13 @@ import { useState } from "react"
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import api from "../api"
+import { useNotification } from "../../context/ToastifyContext"
 
 const LoginForm: React.FC = () => {
     const { loginUser } = useAuth()
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const { showSuccess, showError } = useNotification()
 
     const navigate = useNavigate()
 
@@ -20,11 +22,12 @@ const LoginForm: React.FC = () => {
 
             if (token) {
                 loginUser(token)
+                showSuccess("Login successful!")
                 navigate('/profile')
             }
         } catch (error) {
             console.error("Login failed:", error)
-            alert("Login failed. Please check your credentials.")
+            showError("Login failed!")
         }
     }
   return (

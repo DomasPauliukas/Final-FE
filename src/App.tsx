@@ -31,6 +31,7 @@ import UsersPage from './pages/users/UsersPage'
 import { useAuth } from './context/AuthContext'
 import AdminRoute from './components/privateroute/AdminRoute'
 import AdminDashboard from './pages/admin/AdminDashboard'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   const { user } = useAuth()
@@ -82,6 +83,8 @@ function App() {
         <Route path='/schedules/:id' element={<ScheduleItem />}/>
       </Routes>
     </BrowserRouter>
+
+    <ToastContainer position='bottom-center' autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme='light' />
     </>
   )
 }

@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Artist, Festival } from "../../types/TypesExport";
 import api from "../../components/api";
 import OnlyAdmin from "../../components/privateroute/OnlyAdmin";
+import { useNotification } from "../../context/ToastifyContext";
 
 const ArtistItem: React.FC = () => {
     const { id } = useParams()
@@ -10,6 +11,8 @@ const ArtistItem: React.FC = () => {
 
     const [artist, setArtist] = useState<Artist | null>(null)
     const [festivals, setFestivals] = useState<Festival[] | null>(null)
+
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
         const fetchArtist = async () => {
@@ -31,9 +34,11 @@ const ArtistItem: React.FC = () => {
     const deleteArtist = async (id: string) => {
         try {
             await api.delete(`/artists/${id}`)
+            showSuccess("Artist deleted successfully")
             navigate('/artists')
         } catch (error) {
             console.error("Error deleting artist:", error)
+            showError("Error deleting artist")
         }
     }
 

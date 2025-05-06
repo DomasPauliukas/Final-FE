@@ -5,6 +5,7 @@ import api from "../../components/api"
 import UserNavigator from "../../components/usernavigator/UserNavigator"
 import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
 import { useAuth } from "../../context/AuthContext"
+import { useNotification } from "../../context/ToastifyContext"
 
 const FestivalItem: React.FC = () => {
 
@@ -16,6 +17,8 @@ const FestivalItem: React.FC = () => {
     const [ticketType, setTicketType] = useState('Regular')
     const [quantity, setQuantity] = useState(1)
     const [totalPrice, setTotalPrice] = useState<number>(0)
+
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
         const fetchFestival = async () => {
@@ -44,10 +47,11 @@ const FestivalItem: React.FC = () => {
     const deleteFestival = async (id: string) => {
         try {
             await api.delete(`/festivals/${id}`)
-            alert("Festival deleted successfully!")
+            showSuccess("Festival deleted successfully")
             navigate('/festivals')
         } catch (error) {
             console.error("Error deleting festival:", error)
+            showError("Error deleting festival")
         }
     }
 

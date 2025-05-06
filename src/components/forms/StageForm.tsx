@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Festival, Stage } from "../../types/TypesExport"
 import api from "../api"
 import { useNavigate } from "react-router-dom"
+import { useNotification } from "../../context/ToastifyContext"
 
 
 type StageFormProps = {
@@ -14,6 +15,8 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
     const [name, setName] = useState<string>('')
     const [capacity, setCapacity] = useState<number>(0)
     const [festivalId, setFestivalId] = useState<string>('')
+
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
         const fetchFestivals = async () => {
@@ -46,20 +49,20 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
         if (editStageData) {
             try {
                 await api.put(`/stages/${editStageData._id}`, newStage)
-                alert("Stage updated successfully!")
+                showSuccess("Stage updated successfully!")
                 navigate(`/stages/${editStageData._id}`)
             } catch (error) {
                 console.error("Error updating stage:", error)
-                alert("Error updating stage")
+                showError("Error updating stage")
             }
         } else {
             try {
                 await api.post('/stages', newStage)
-                alert("Stage created successfully!")
+                showSuccess("Stage created successfully!")
                 navigate(`/stages`)
             } catch (error) {
                 console.error("Error creating stage:", error)
-                alert("Error creating stage")
+                showError("Error creating stage")
             }
         }
     }

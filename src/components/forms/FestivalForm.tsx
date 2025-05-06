@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import api from "../api"
 import { useNavigate } from "react-router-dom"
 import { Festival } from "../../types/TypesExport"
+import { useNotification } from "../../context/ToastifyContext"
 
 type FestivalFormProps = {
     editFestivalData?: Festival
@@ -16,6 +17,8 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
     const [description, setDescription] = useState<string>('')
     const [regularPrice, setRegularPrice] = useState<number>(0)
     const [vipPrice, setVipPrice] = useState<number>(0)
+
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
         if (editFestivalData) {
@@ -34,7 +37,7 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
         event.preventDefault()
         
         if (!name || !location || !date || !image || !description) {
-            alert("All fields are required!")
+            showError("All fields are required!")
             return
         }
 
@@ -51,21 +54,21 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
         if (editFestivalData) {
             try {
                 await api.put(`/festivals/${editFestivalData._id}`, newFestival)
-                alert("Festival updated successfully!")
+                showSuccess("Festival updated successfully!")
                 navigate(`/festivals/${editFestivalData._id}`)
             }
             catch (error) {
                 console.error("Error updating festival:", error)
-                alert("Error updating festival")
+                showError("Error updating festival")    
             }
         } else {
             try {
                 await api.post('/festivals', newFestival)
-                alert("Festival created successfully!")
+                showSuccess("Festival created successfully!")
                 navigate(`/festivals`)
             } catch (error) {
                 console.error("Error creating festival:", error)
-                alert("Error creating festival")
+                showError("Error creating festival")
             }
         }
     }

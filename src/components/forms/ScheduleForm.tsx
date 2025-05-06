@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Artist, Schedule, Stage } from "../../types/TypesExport";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
+import { useNotification } from "../../context/ToastifyContext";
 
 type ScheduleFormProps = {
     editScheduleData?: Schedule
@@ -15,6 +16,8 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
     const [endTime, setEndTime] = useState<string>('')
     const [artistId, setArtistId] = useState<string>('')
     const [stageId, setStageId] = useState<string>('')
+
+    const { showSuccess, showError } = useNotification()
 
     const navigate = useNavigate()
 
@@ -46,7 +49,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
 
         const selectedStage = stages.find((stage) => stage._id === stageId)
         if (!selectedStage) {
-            alert("Stage not found")
+            showError("Stage not found!")
             return
         }
 
@@ -61,20 +64,20 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
         if (editScheduleData) {
             try {
                 await api.put(`/schedules/${editScheduleData._id}`, newSchedule)
-                alert("Schedule updated successfully!")
+                showSuccess("Schedule updated successfully!")
                 navigate(`/schedules/${editScheduleData._id}`)
             } catch (error) {
                 console.error("Error updating schedule:", error)
-                alert('Failed to update schedule. Please try again.')
+                showError("Failed to update schedule. Please try again.")
             }
         } else {
             try {
                 await api.post('/schedules', newSchedule)
-                alert('Schedule created successfully!')
+                showSuccess("Schedule created successfully!")
                 navigate('/schedules')
             } catch (error) {
                 console.error("Error creating schedule:", error)
-                alert('Failed to create schedule. Please try again.')
+                showError("Failed to create schedule. Please try again.")
             }
         }
     }

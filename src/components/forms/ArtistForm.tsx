@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { Artist } from "../../types/TypesExport";
+import { useNotification } from "../../context/ToastifyContext";
 
 type ArtistFormProps = {
     editArtistData?: Artist
@@ -15,6 +16,8 @@ const ArtistForm: React.FC<ArtistFormProps> = ( {editArtistData}) => {
     const [image, setImage] = useState<string>('')
     const [bio, setBio] = useState<string>('')
     const [hits, setHits] = useState<string[]>([])
+
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
         if (editArtistData) {
@@ -31,7 +34,7 @@ const SubmitHandler = async (event: React.FormEvent) => {
     event.preventDefault()
 
     if (!name || !country || !genre || !image || !bio || hits.length === 0) {
-        alert("All fields are required!")
+        showError("All fields are required!")
         return
     }
 
@@ -47,21 +50,21 @@ const SubmitHandler = async (event: React.FormEvent) => {
     if (editArtistData) {
         try {
             await api.put(`/artists/${editArtistData._id}`, newArtist)
-            alert("Artist updated successfully!")
+            showSuccess("Artist updated successfully!")
             navigate(`/artists/${editArtistData._id}`)
         }
         catch (error) {
             console.error("Error updating artist:", error)
-            alert("Error updating artist")
+            showError("Error updating artist")
         }
     } else {
         try {
             await api.post('/artists', newArtist)
-            alert("Artist created successfully!")
+            showSuccess("Artist created successfully!")
             navigate(`/artists`)
         } catch (error) {
             console.error("Error creating artist:", error)
-            alert("Error creating artist")
+            showError("Error creating artist")
         }
     }
 }

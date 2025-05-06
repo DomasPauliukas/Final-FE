@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../api"
+import { useNotification } from "../../context/ToastifyContext"
 
 const RegisterForm: React.FC = () => {
     const [name, setName] = useState('')
@@ -11,18 +12,20 @@ const RegisterForm: React.FC = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
+    const { showSuccess, showError } = useNotification()
+
     const navigate = useNavigate()
 
 const RegisterHandler = async (event: React.FormEvent) => {
     event.preventDefault()
 
     if (password !== confirmPassword) {
-        alert("Passwords do not match!")
+        showError("Passwords do not match!")
         return
     }
 
     if (!name || !surname || !age || !username || !email || !password) {
-        alert("All fields are required!")
+        showError("All fields are required!")
         return
     }
 
@@ -37,11 +40,11 @@ const RegisterHandler = async (event: React.FormEvent) => {
 
     try {
         await api.post(`/users/register`, registerInfo)
-        alert("Registration successful!")
+        showSuccess("Registration successful!")
         navigate('/login')
     } catch (error) {
         console.error("Registration error:", error)
-        alert("Registration failed. Please try again.")
+        showError("Registration failed!")
     }
 }
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import api from "../../components/api"
+import { useNotification } from "../../context/ToastifyContext"
 
 const EditProfile: React.FC = () => {
     const { user, updateUser } = useAuth()
@@ -11,6 +12,8 @@ const EditProfile: React.FC = () => {
     const [surname, setSurname] = useState<string>('')
     const [age, setAge] = useState<number>(0)
     const [username, setUsername] = useState<string>('')
+
+    const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
         if (user) {
@@ -35,11 +38,11 @@ const EditProfile: React.FC = () => {
             await api.put(`/users/${user?.userId}`, updatedUser)
             updateUser(updatedUser)
             
-            alert("Profile updated successfully!")
+            showSuccess("Profile updated successfully")
             navigate('/profile')
         } catch (error) {
             console.error("Error updating profile:", error)
-            alert("Failed to update profile. Please try again.")
+            showError("Error updating profile")
         }
     }
   return (
