@@ -29,7 +29,7 @@ const SchedulesPage: React.FC = () => {
     <div>
       <h1>Schedules</h1>
       <OnlyAdmin>
-        <Link to="/create-schedule" className={styles.btnLink}>+ Create Schedule</Link>
+        <Link to="/create-schedule" className={styles.btnLink}>+ Create New Schedule</Link>
       </OnlyAdmin>
 
       <input

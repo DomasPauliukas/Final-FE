@@ -4,6 +4,7 @@ import api from "../../../components/api"
 import { Link } from "react-router-dom"
 import UserNavigator from "../../../components/usernavigator/UserNavigator"
 import OnlyAdmin from "../../../components/privateroute/OnlyAdmin"
+import styles from "./FestivalsPage.module.css"
 
 const FestivalsPage: React.FC = () => {
   const [festivals, setFestivals] = useState<Festival[]>([])
@@ -24,22 +25,23 @@ useEffect(() => {
     <div>
       <h1>Festival Page</h1>
       <OnlyAdmin>
-        <Link to="/create-festival">Create Festival</Link>
+        <Link to="/create-festival" className={styles.btnLink}>+ Create New Festival</Link>
       </OnlyAdmin>
       
-      <p>This is the festival page.</p>
-      {festivals.map((festival) => (
-        <div key={festival._id}>
-          <h2>{festival.name}</h2>
-          <p>{festival.description}</p>
-          <p>Date: {festival.date}</p>
-          <p>Location: {festival.location}</p>
-          <img src={festival.image} alt={festival.name} style={{ width: '200px', height: 'auto' }} />
-          <div>
-          <Link to={`/festivals/${festival._id}`}>View Details</Link>
-          </div>
-        </div>
-      ))}
+      <div className={styles.festivalGrid}>
+          {festivals.map((festival) => (
+            <div key={festival._id} className={styles.festivalCard}>
+              <h2>{festival.name}</h2>
+              <p>{festival.description}</p>
+              <p>Date: {festival.date}</p>
+              <p>Location: {festival.location}</p>
+              <img src={festival.image} alt={festival.name} style={{ width: '200px', height: 'auto' }} />
+              <div>
+              <Link to={`/festivals/${festival._id}`}>View Details</Link>
+              </div>
+            </div>
+          ))}
+      </div>
 
         <UserNavigator />
     </div>
