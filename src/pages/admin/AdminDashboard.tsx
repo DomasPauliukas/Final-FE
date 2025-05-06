@@ -6,6 +6,7 @@ const AdminDashboard: React.FC = () => {
       <h1>Admin Dashboard</h1>
       <ul>
         <li><Link to="/users">Manage Users</Link></li>
+        <li><Link to="/tickets">Manage Tickets</Link></li>
         <li><Link to="/festivals">Manage Festivals</Link></li>
         <li><Link to="/create-festival">Create Festival</Link></li>
         <li><Link to="/artists">Manage Artists</Link></li>

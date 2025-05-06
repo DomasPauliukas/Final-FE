@@ -31,6 +31,7 @@ import { useAuth } from './context/AuthContext'
 import AdminRoute from './components/privateroute/AdminRoute'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import { ToastContainer } from 'react-toastify'
+import AllTicketsPage from './pages/tickets/AllTicketsPage'
 
 function App() {
   const { user } = useAuth()
@@ -65,6 +66,7 @@ function App() {
           <Route path='/edit-stage/:id' element={<EditStage />}/>
           <Route path='/create-schedule' element={<CreateSchedule />}/>
           <Route path='/edit-schedule/:id' element={<EditSchedule />}/>
+          <Route path='/tickets' element={<AllTicketsPage />} />
         </Route>
 
         <Route path='/festivals' element={<FestivalsPage />}/>
