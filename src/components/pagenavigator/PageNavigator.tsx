@@ -13,10 +13,6 @@ const PageNavigator: React.FC = () => {
 
             <NavLink to={'/stages'}>Stages</NavLink>
             <NavLink to={'/schedules'}>Schedules</NavLink>
-            
-        <OnlyAdmin>
-            <NavLink to={'/users'}>Users</NavLink>
-        </OnlyAdmin>
 
         {!user ? (
             <>
@@ -26,9 +22,15 @@ const PageNavigator: React.FC = () => {
         ) : (
             <>
                 <NavLink to={'/profile'}>My profile</NavLink>
+            {user.role === 'USER' && (
                 <NavLink to={'/my-festivals'}>My Festivals</NavLink>
+            )}
             </>
         )}
+        
+        <OnlyAdmin>
+            <NavLink to={'/admin'}>Admin</NavLink>
+        </OnlyAdmin>
         </div>
     )
 }

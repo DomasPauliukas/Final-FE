@@ -30,6 +30,7 @@ import EditSchedule from './pages/schedules/EditSchedule'
 import UsersPage from './pages/users/UsersPage'
 import { useAuth } from './context/AuthContext'
 import AdminRoute from './components/privateroute/AdminRoute'
+import AdminDashboard from './pages/admin/AdminDashboard'
 
 function App() {
   const { user } = useAuth()
@@ -54,6 +55,7 @@ function App() {
         </Route>
 
         <Route element={<AdminRoute />}>
+          <Route path='/admin' element={<AdminDashboard />}/>
           <Route path='/users' element={<UsersPage />}/>
           <Route path='/create-festival' element={<CreateFestival />}/>
           <Route path='/edit-festival/:id' element={<EditFestival />}/>
