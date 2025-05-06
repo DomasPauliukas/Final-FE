@@ -40,8 +40,6 @@ const ScheduleItem: React.FC = () => {
     console.log(schedule)
   return (
     <div>
-      <h1>Schedule Item</h1>
-      <p>This is a schedule item component.</p>
         <h2>Festival: <Link to={`/festivals/${schedule.festivalId._id}`}>{schedule.festivalId.name}</Link></h2>
         <p>Stage: <Link to={`/stages/${schedule.stageId._id}`}>{schedule.stageId.name}</Link></p>
         <p>Artist: <Link to={`/artists/${schedule.artistId._id}`}>{schedule.artistId.name}</Link></p>
