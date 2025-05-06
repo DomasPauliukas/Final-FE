@@ -3,7 +3,7 @@ import { Schedule } from "../../../types/TypesExport"
 import api from "../../../components/api"
 import { Link } from "react-router-dom"
 import OnlyAdmin from "../../../components/privateroute/OnlyAdmin"
-import "./SchedulesPage.css"
+import styles from "./SchedulesPage.module.css"
 
 const SchedulesPage: React.FC = () => {
   const [schedules, setSchedules] = useState<Schedule[] | null>(null)
@@ -29,7 +29,7 @@ const SchedulesPage: React.FC = () => {
     <div>
       <h1>Schedules</h1>
       <OnlyAdmin>
-        <Link to="/create-schedule" className="btn-link">+ Create Schedule</Link>
+        <Link to="/create-schedule" className={styles.btnLink}>+ Create Schedule</Link>
       </OnlyAdmin>
 
       <input
@@ -37,13 +37,13 @@ const SchedulesPage: React.FC = () => {
         placeholder="Search by festival name..."
         value={searchByFestival}
         onChange={(event) => setSearchByFestival(event.target.value)}
-        className="search-input"
+        className={styles.searchInput}
       />
 
-      <div className="schedule-list">
+      <div className={styles.scheduleGrid}>
         {filteredSchedules.length === 0 && <p>No schedules found for the given festival name.</p>}
         {filteredSchedules.map((schedule) => (
-          <div key={schedule._id} className="schedule-card">
+          <div key={schedule._id} className={styles.scheduleCard}>
             <h3>{schedule.festivalId.name}</h3>
             <p><strong>Stage:</strong> {schedule.stageId.name}</p>
             <p><strong>Artist:</strong> {schedule.artistId.name}</p>

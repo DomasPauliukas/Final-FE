@@ -3,7 +3,7 @@ import { Stage } from "../../../types/TypesExport"
 import api from "../../../components/api"
 import { Link } from "react-router-dom"
 import OnlyAdmin from "../../../components/privateroute/OnlyAdmin"
-import "./StagesPage.css" // optional for styling
+import styles from "./StagesPage.module.css"
 
 const StagesPage: React.FC = () => {
   const [stages, setStages] = useState<Stage[] | null>(null)
@@ -29,7 +29,7 @@ const StagesPage: React.FC = () => {
     <div>
       <h1>Stages</h1>
       <OnlyAdmin>
-        <Link to="/create-stage" className="btn-link">+ Create New Stage</Link>
+        <Link to="/create-stage" className={styles.btnLink}>+ Create New Stage</Link>
       </OnlyAdmin>
 
       <input
@@ -37,23 +37,23 @@ const StagesPage: React.FC = () => {
         placeholder="Search by festival name..."
         value={searchByFestival}
         onChange={(event) => setSearchByFestival(event.target.value)}
-        className="search-input"
+        className={styles.searchInput}
       />
 
-      <div className="stage-list">
+      <div className={styles.stageGrid}>
         {filteredStages.length === 0 && <p>No stages found for the given festival name.</p>}
         {filteredStages.map((stage) => (
-          <div key={stage._id} className="stage-card">
+          <div key={stage._id} className={styles.stageCard}>
             <h2>
               <Link to={`/stages/${stage._id}`}>{stage.name}</Link>
             </h2>
             <p><strong>Capacity:</strong> {stage.capacity}</p>
             <p>
-              <strong>Festival:</strong>{" "}
+              <strong>Festival: </strong>
               <Link to={`/festivals/${stage.festivalId._id}`}>
-                {stage.festivalId.name}
-              </Link>{" "}
-              <small>({new Date(stage.festivalId.date).toLocaleDateString()})</small>
+                {stage.festivalId.name} 
+              </Link>
+              <span> ({stage.festivalId.date})</span>
             </p>
           </div>
         ))}
