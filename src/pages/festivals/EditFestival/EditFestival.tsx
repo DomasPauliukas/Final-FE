@@ -25,8 +25,8 @@ const EditFestival: React.FC = () => {
     }
 
   return (
-    <div>
-      <h1>Edit Festival</h1>
+    <div className="form-page-container">
+      <h1 className="form-title">Edit Festival</h1>
       <FestivalForm editFestivalData={festival}/>
     </div>
   )

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { useAuth } from "../../context/AuthContext"
+import styles from './UserNavigator.module.css'
 
 const UserNavigator: React.FC = () => {
     const { user } = useAuth()
@@ -7,13 +8,13 @@ const UserNavigator: React.FC = () => {
   return (
     <div>
     {!user && 
-        <>
-        <p>Only logged users can buy festival tickets and see personal 'My festival' page!</p>
-        <div style={{ display: 'flex', gap: '16px' }}>
-            <Link to={'/login'}>Login</Link>
-            <Link to={'/register'}>Register</Link>
+        <div className={styles.wrapper}>
+          <p className={styles.message}>Only logged users can buy festival tickets and see personal 'My festival' page!</p>
+          <div className={styles.linkRow}>
+              <Link to={'/login'} className={styles.link}>Login</Link>
+              <Link to={'/register'} className={styles.link}>Register</Link>
+          </div>
         </div>
-        </>
     }
     </div>
   )

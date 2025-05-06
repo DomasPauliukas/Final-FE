@@ -25,8 +25,8 @@ const EditStage: React.FC = () => {
         return <div>Loading...</div>
     }
   return (
-    <div>
-      <h1>Edit Stage</h1>
+    <div className="form-page-container">
+      <h1 className="form-title">Edit Stage</h1>
       <StageForm editStageData={stage} />
     </div>
   )

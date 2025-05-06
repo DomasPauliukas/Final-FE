@@ -25,8 +25,8 @@ const EditArtist: React.FC = () => {
     }
 
   return (
-    <div>
-      <h1>Edit Artist</h1>
+    <div className="form-page-container">
+      <h1 className="form-title">Edit Artist</h1>
         <ArtistForm editArtistData={artist}/>
     </div>
   )

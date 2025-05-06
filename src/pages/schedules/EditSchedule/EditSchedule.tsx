@@ -25,8 +25,8 @@ const EditSchedule: React.FC = () => {
         return <div>Loading...</div>
     }
     return (
-      <div>
-        <h1>Edit Schedule</h1>
+      <div className="form-page-container">
+        <h1 className="form-title">Edit Schedule</h1>
         <ScheduleForm editScheduleData={schedule}/>
       </div>
     )

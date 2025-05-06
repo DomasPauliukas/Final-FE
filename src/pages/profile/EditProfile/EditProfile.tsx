@@ -3,6 +3,7 @@ import { useAuth } from "../../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import api from "../../../components/api"
 import { useNotification } from "../../../context/ToastifyContext"
+import styles from '../../../components/forms/Form.module.css'
 
 const EditProfile: React.FC = () => {
     const { user, updateUser } = useAuth()
@@ -46,54 +47,56 @@ const EditProfile: React.FC = () => {
         }
     }
   return (
-    <div>
+    <div className="form-page-container">
       <h1>Edit Profile</h1>
 
-      <form onSubmit={UpdateHandler}>
-        <div className="form-control">
-          <label htmlFor="name">Name: </label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="surname">Surname: </label>
-          <input
-            type="text"
-            id="surname"
-            value={surname}
-            onChange={(event) => setSurname(event.target.value)}
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="age">Age: </label>
-          <input
-            type="number"
-            id="age"
-            value={age}
-            onChange={(event) => setAge(Number(event.target.value))}
-            required
-          />
-        </div>
-        <div className="form-control">
-          <label htmlFor="username">Username: </label>
-          <input
-            type="text"
-            id="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            required
-          />
-        </div>
+      <div className={styles.formWrapper}>
+        <form onSubmit={UpdateHandler}>
+          <div className={styles.formControl}>
+            <label htmlFor="name">Name: </label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(event) => setName(event.target.value)}
+              required
+            />
+          </div>
+          <div className={styles.formControl}>
+            <label htmlFor="surname">Surname: </label>
+            <input
+              type="text"
+              id="surname"
+              value={surname}
+              onChange={(event) => setSurname(event.target.value)}
+              required
+            />
+          </div>
+          <div className={styles.formControl}>
+            <label htmlFor="age">Age: </label>
+            <input
+              type="number"
+              id="age"
+              value={age}
+              onChange={(event) => setAge(Number(event.target.value))}
+              required
+            />
+          </div>
+          <div className={styles.formControl}>
+            <label htmlFor="username">Username: </label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+              required
+            />
+          </div>
 
-        <button type="submit">Edit</button>
+          <button type="submit" className={styles.submitButton}>Edit</button>
 
-      </form>
+        </form>
+      </div>
     </div>
   )
 }

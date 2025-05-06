@@ -4,8 +4,8 @@ import RegisterForm from "../../components/forms/RegisterForm"
 const RegisterPage = () => {
 
   return (
-    <div>
-      <h1>Register Form: </h1>
+    <div className="form-page-container">
+      <h1 className="form-title">Register Form: </h1>
       <RegisterForm />
       <Link to="/login">Already have an account? Login</Link>
     </div>
