@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Stage } from "../../types/TypesExport"
-import api from "../../components/api"
-import StageForm from "../../components/forms/StageForm"
+import { Stage } from "../../../types/TypesExport"
+import api from "../../../components/api"
+import StageForm from "../../../components/forms/StageForm"
 
 const EditStage: React.FC = () => {
     const { id } = useParams()
@@ -27,8 +27,6 @@ const EditStage: React.FC = () => {
   return (
     <div>
       <h1>Edit Stage</h1>
-      <p>This is the Edit Stage page.</p>
-
       <StageForm editStageData={stage} />
     </div>
   )

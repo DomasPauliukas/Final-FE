@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { Schedule } from "../../types/TypesExport"
-import api from "../../components/api"
-import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
-import { useNotification } from "../../context/ToastifyContext"
+import { Schedule } from "../../../types/TypesExport"
+import api from "../../../components/api"
+import OnlyAdmin from "../../../components/privateroute/OnlyAdmin"
+import { useNotification } from "../../../context/ToastifyContext"
 
 const ScheduleItem: React.FC = () => {
     const { id } = useParams()

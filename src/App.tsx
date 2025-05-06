@@ -2,36 +2,36 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import LoginPage from './pages/login/LoginPage'
 import HomePage from './pages/homepage/HomePage'
-import FestivalsPage from './pages/festivals/FestivalsPage'
+import FestivalsPage from './pages/festivals/FestivalsPage/FestivalsPage'
 import RegisterPage from './pages/register/RegisterPage'
-import ArtistsPage from './pages/artists/ArtistsPage'
+import ArtistsPage from './pages/artists/ArtistsPage/ArtistsPage'
 import MyFestivalsPage from './pages/my-festivals/MyFestivalsPage'
 import PageNavigator from './components/pagenavigator/PageNavigator'
-import ProfilePage from './pages/profile/ProfilePage'
-import EditProfile from './pages/profile/EditProfile'
+import ProfilePage from './pages/profile/ProfilePage/ProfilePage'
+import EditProfile from './pages/profile/EditProfile/EditProfile'
 import PrivateRoute from './components/privateroute/PrivateRoute'
-import FestivalItem from './pages/festivals/FestivalItem'
-import FestivalArtistsPage from './pages/festivals/FestivalArtistsPage'
-import FestivalSchedulePage from './pages/festivals/FestivalSchedulePage'
-import ArtistItem from './pages/artists/ArtistItem'
-import CreateArtist from './pages/artists/CreateArtist'
-import EditArtist from './pages/artists/EditArtist'
-import CreateFestival from './pages/festivals/CreateFestival'
-import EditFestival from './pages/festivals/EditFestival'
-import StagesPage from './pages/stages/StagesPage'
-import StageItem from './pages/stages/StageItem'
-import EditStage from './pages/stages/EditStage'
-import CreateStage from './pages/stages/CreateStage'
-import SchedulesPage from './pages/schedules/SchedulesPage'
-import ScheduleItem from './pages/schedules/ScheduleItem'
-import CreateSchedule from './pages/schedules/CreateSchedule'
-import EditSchedule from './pages/schedules/EditSchedule'
+import FestivalItem from './pages/festivals/FestivalItem/FestivalItem'
+import FestivalArtistsPage from './pages/festivals/FestivalArtistsPage/FestivalArtistsPage'
+import FestivalSchedulePage from './pages/festivals/FestivalSchedulePage/FestivalSchedulePage'
+import ArtistItem from './pages/artists/ArtistItem/ArtistItem'
+import CreateArtist from './pages/artists/CreateArtist/CreateArtist'
+import EditArtist from './pages/artists/EditArtist/EditArtist'
+import CreateFestival from './pages/festivals/CreateFestival/CreateFestival'
+import EditFestival from './pages/festivals/EditFestival/EditFestival'
+import StagesPage from './pages/stages/StagesPage/StagesPage'
+import EditStage from './pages/stages/EditStage/EditStage'
+import CreateStage from './pages/stages/CreateStage/CreateStage'
+import SchedulesPage from './pages/schedules/SchedulesPage/SchedulesPage'
+import ScheduleItem from './pages/schedules/ScheduleItem/ScheduleItem'
+import CreateSchedule from './pages/schedules/CreateSchedule/CreateSchedule'
+import EditSchedule from './pages/schedules/EditSchedule/EditSchedule'
 import UsersPage from './pages/users/UsersPage'
 import { useAuth } from './context/AuthContext'
 import AdminRoute from './components/privateroute/AdminRoute'
 import AdminDashboard from './pages/admin/AdminDashboard'
 import { ToastContainer } from 'react-toastify'
 import AllTicketsPage from './pages/tickets/AllTicketsPage'
+import StageItem from './pages/stages/StageItem/StageItem'
 
 function App() {
   const { user } = useAuth()
@@ -85,7 +85,7 @@ function App() {
       </Routes>
     </BrowserRouter>
 
-    <ToastContainer position='bottom-center' autoClose={3000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme='light' />
+    <ToastContainer position='bottom-center' autoClose={2000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme='light' />
     </>
   )
 }

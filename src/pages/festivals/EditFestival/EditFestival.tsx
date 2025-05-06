@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import api from "../../components/api"
-import { Festival } from "../../types/TypesExport"
-import FestivalForm from "../../components/forms/FestivalForm"
+import api from "../../../components/api"
+import { Festival } from "../../../types/TypesExport"
+import FestivalForm from "../../../components/forms/FestivalForm"
 
 const EditFestival: React.FC = () => {
     const { id } = useParams()
@@ -27,7 +27,6 @@ const EditFestival: React.FC = () => {
   return (
     <div>
       <h1>Edit Festival</h1>
-
       <FestivalForm editFestivalData={festival}/>
     </div>
   )

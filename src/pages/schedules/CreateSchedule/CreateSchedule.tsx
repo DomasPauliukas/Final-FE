@@ -1,4 +1,4 @@
-import ScheduleForm from "../../components/forms/ScheduleForm";
+import ScheduleForm from "../../../components/forms/ScheduleForm";
 
 const CreateSchedule: React.FC = () => {
   return (

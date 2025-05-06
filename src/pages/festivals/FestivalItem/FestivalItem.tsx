@@ -1,11 +1,11 @@
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { Festival } from "../../types/TypesExport"
+import { Festival } from "../../../types/TypesExport"
 import { useEffect, useState } from "react"
-import api from "../../components/api"
-import UserNavigator from "../../components/usernavigator/UserNavigator"
-import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
-import { useAuth } from "../../context/AuthContext"
-import { useNotification } from "../../context/ToastifyContext"
+import api from "../../../components/api"
+import UserNavigator from "../../../components/usernavigator/UserNavigator"
+import OnlyAdmin from "../../../components/privateroute/OnlyAdmin"
+import { useAuth } from "../../../context/AuthContext"
+import { useNotification } from "../../../context/ToastifyContext"
 
 const FestivalItem: React.FC = () => {
 

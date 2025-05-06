@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { useAuth } from "../../context/AuthContext"
+import { useAuth } from "../../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
-import api from "../../components/api"
-import { useNotification } from "../../context/ToastifyContext"
+import api from "../../../components/api"
+import { useNotification } from "../../../context/ToastifyContext"
 
 const EditProfile: React.FC = () => {
     const { user, updateUser } = useAuth()

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Artist, Festival } from "../../types/TypesExport";
-import api from "../../components/api";
-import OnlyAdmin from "../../components/privateroute/OnlyAdmin";
-import { useNotification } from "../../context/ToastifyContext";
+import { Artist, Festival } from "../../../types/TypesExport";
+import api from "../../../components/api";
+import OnlyAdmin from "../../../components/privateroute/OnlyAdmin";
+import { useNotification } from "../../../context/ToastifyContext";
 
 const ArtistItem: React.FC = () => {
     const { id } = useParams()

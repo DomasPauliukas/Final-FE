@@ -84,8 +84,6 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
 
   return (
     <div>
-      <h1>Schedule Form</h1>
-
       <form onSubmit={submitHandler}>
         <div className="form-control">
             <label htmlFor="artist">Artist: </label>

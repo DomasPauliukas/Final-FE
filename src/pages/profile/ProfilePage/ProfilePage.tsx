@@ -1,7 +1,7 @@
 import { Navigate, NavLink } from "react-router-dom"
-import { useAuth } from "../../context/AuthContext"
+import { useAuth } from "../../../context/AuthContext"
 import { useEffect, useState } from "react"
-import api from "../../components/api"
+import api from "../../../components/api"
 
 interface LoggedUser {
     name: string

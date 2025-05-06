@@ -75,8 +75,6 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
     
   return (
     <div>
-      <h1>Festival Form</h1>
-
       <form onSubmit={SubmitHandler}>
         <div className="form-control">
             <label htmlFor="name">Name: </label>

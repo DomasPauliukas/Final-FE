@@ -118,11 +118,11 @@ const SubmitHandler = async (event: React.FormEvent) => {
         </div>
         <div className="form-control">
             <label htmlFor="hits">Most popular hits:</label>
-            <input
-                type="text"
+            <textarea
                 id="hits"
                 value={hits.join(', ')}
                 onChange={(event) => setHits(event.target.value.split(',').map(hit => hit.trim()))}
+                rows={5}
             />
         </div>
 
