@@ -58,6 +58,7 @@ function App() {
         <Route element={<AdminRoute />}>
           <Route path='/admin' element={<AdminDashboard />}/>
           <Route path='/users' element={<UsersPage />}/>
+          <Route path='/edit-user/:userId' element={<EditProfile />}/>
           <Route path='/create-festival' element={<CreateFestival />}/>
           <Route path='/edit-festival/:id' element={<EditFestival />}/>
           <Route path='/create-artist' element={<CreateArtist />}/>

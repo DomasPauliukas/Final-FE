@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useAuth } from "../../../context/AuthContext"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import api from "../../../components/api"
 import { useNotification } from "../../../context/ToastifyContext"
 import styles from '../../../components/forms/Form.module.css'
@@ -14,16 +14,34 @@ const EditProfile: React.FC = () => {
     const [age, setAge] = useState<number>(0)
     const [username, setUsername] = useState<string>('')
 
+    const { userId } = useParams()
+    const isAdminEditing = user?.role === 'ADMIN' && userId && userId !== user?.userId
+    const targetUserId = isAdminEditing ? userId : user?.userId
+
+
     const { showSuccess, showError } = useNotification()
 
     useEffect(() => {
-        if (user) {
+        const fetchUserData = async () => {
+          if (isAdminEditing && targetUserId) {
+            try {
+                const res = await api.get(`/users/${targetUserId}`)
+                setName(res.data.name)
+                setSurname(res.data.surname)
+                setAge(res.data.age)
+                setUsername(res.data.username)
+            } catch (error) {
+                console.error("Error fetching user data:", error)
+            }
+          } else if (user) {
             setName(user.name)
             setSurname(user.surname)
             setAge(user.age)
             setUsername(user.username)
+          }
         }
-    }, [user])
+        fetchUserData()
+    }, [user, targetUserId, isAdminEditing])
 
     const UpdateHandler = async (event: React.FormEvent) => {
         event.preventDefault()
@@ -36,11 +54,15 @@ const EditProfile: React.FC = () => {
         }
 
         try {
-            await api.put(`/users/${user?.userId}`, updatedUser)
-            updateUser(updatedUser)
-            
-            showSuccess("Profile updated successfully")
-            navigate('/profile')
+            await api.put(`/users/${targetUserId}`, updatedUser)
+            if (!isAdminEditing) {
+              updateUser(updatedUser)
+              showSuccess("Profile updated successfully")
+              navigate('/profile')
+            } else {
+              showSuccess("User updated successfully")
+              navigate('/users')
+            }
         } catch (error) {
             console.error("Error updating profile:", error)
             showError("Error updating profile")

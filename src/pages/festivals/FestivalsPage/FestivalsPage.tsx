@@ -35,7 +35,7 @@ useEffect(() => {
               <p>{festival.description}</p>
               <p>Date: {festival.date}</p>
               <p>Location: {festival.location}</p>
-              <img src={festival.image} alt={festival.name} style={{ width: '200px', height: 'auto' }} />
+              <img src={festival.image} alt={festival.name} className={styles.festivalImage} />
               <div>
               <Link to={`/festivals/${festival._id}`}>View Details</Link>
               </div>

@@ -41,7 +41,7 @@ if (!artists) {
             .filter((artist) => artist.name.toLowerCase().includes(searchArtist.toLowerCase()))
             .map((artist) => (
               <div key={artist._id} className={styles.artistCard}>
-                <img src={artist.image} alt={artist.name} style={{ width: '200px', height: 'auto' }} />
+                <img src={artist.image} alt={artist.name} className={styles.artistImage} />
                 <h2>{artist.name} ({artist.country})</h2>
                 <p>{artist.genre}</p>
                 <div>

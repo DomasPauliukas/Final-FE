@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { User } from "../../types/TypesExport"
 import api from "../../components/api"
 import { useNotification } from "../../context/ToastifyContext"
+import { Link } from "react-router-dom"
 
 const UsersPage: React.FC = () => {
     const [users, setUsers] = useState<User[] | null>(null)
@@ -45,7 +46,6 @@ const UsersPage: React.FC = () => {
     return (
       <div>
           <h1>Users Page</h1>
-          <p>This is the users page.</p>
           {users && users.length > 0 ? (
             <div>
               {users.map((user) => (
@@ -53,6 +53,9 @@ const UsersPage: React.FC = () => {
                   <h3>
                     {user.username}{" "}
                     <button onClick={() => deleteUser(user._id ?? "")}>Delete User</button>
+                    <Link to={`/edit-user/${user._id}`}>
+                      <button>Edit User</button>
+                    </Link>
                   </h3>
                   <p><strong>Name:</strong> {user.name}</p>
                   <p><strong>Surname:</strong> {user.surname}</p>
