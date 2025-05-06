@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import api from "../../components/api"
-import { Schedule, Stage } from "../../types/TypesExport"
-import UserNavigator from "../../components/usernavigator/UserNavigator"
+import api from "../../../components/api"
+import { Schedule, Stage } from "../../../types/TypesExport"
+import UserNavigator from "../../../components/usernavigator/UserNavigator"
 
 const timeOrder: { [key: string]: number } = {
   "12 AM": 0,

@@ -1,0 +1,37 @@
+.stage-list {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+  
+  .stage-card {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+  }
+  
+  .stage-card h2 a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .btn-link {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background: #646cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }

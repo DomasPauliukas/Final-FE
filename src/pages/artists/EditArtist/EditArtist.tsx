@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import api from "../../components/api"
-import { Artist } from "../../types/TypesExport"
-import ArtistForm from "../../components/forms/ArtistForm"
+import api from "../../../components/api"
+import { Artist } from "../../../types/TypesExport"
+import ArtistForm from "../../../components/forms/ArtistForm"
 
 const EditArtist: React.FC = () => {
     const { id } = useParams()
@@ -27,7 +27,6 @@ const EditArtist: React.FC = () => {
   return (
     <div>
       <h1>Edit Artist</h1>
-      <p>Form to edit an artist will go here.</p>
         <ArtistForm editArtistData={artist}/>
     </div>
   )

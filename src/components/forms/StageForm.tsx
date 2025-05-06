@@ -68,8 +68,6 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
     }
   return (
     <div>
-      <h1>Stage Form</h1>
-
       <form onSubmit={submitHandler}>
         <div className="form-control">
             <label htmlFor="name">Name</label>

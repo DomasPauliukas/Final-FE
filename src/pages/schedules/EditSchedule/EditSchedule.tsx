@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { Schedule } from "../../types/TypesExport"
-import api from "../../components/api"
-import ScheduleForm from "../../components/forms/ScheduleForm"
+import { Schedule } from "../../../types/TypesExport"
+import api from "../../../components/api"
+import ScheduleForm from "../../../components/forms/ScheduleForm"
 
 const EditSchedule: React.FC = () => {
     const { id } = useParams()
@@ -27,8 +27,6 @@ const EditSchedule: React.FC = () => {
     return (
       <div>
         <h1>Edit Schedule</h1>
-        <p>This is a schedule item component.</p>
-
         <ScheduleForm editScheduleData={schedule}/>
       </div>
     )

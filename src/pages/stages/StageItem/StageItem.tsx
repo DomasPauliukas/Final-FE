@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Stage } from "../../types/TypesExport";
-import api from "../../components/api";
-import OnlyAdmin from "../../components/privateroute/OnlyAdmin";
-import { useNotification } from "../../context/ToastifyContext";
+import api from "../../../components/api";
+import OnlyAdmin from "../../../components/privateroute/OnlyAdmin";
+import { useNotification } from "../../../context/ToastifyContext";
+import { Stage } from "../../../types/TypesExport";
 
 const StageItem: React.FC = () => {
     const { id } = useParams()
@@ -42,8 +42,7 @@ const StageItem: React.FC = () => {
     }
   return (
     <div className="stage-item">
-      <h2>Stage Item</h2>
-      <p>This is a placeholder for the stage item component.</p>
+
       <h3>{stage.name}</h3>
       
       <OnlyAdmin>

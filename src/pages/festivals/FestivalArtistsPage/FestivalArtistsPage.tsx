@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
-import { Festival } from "../../types/TypesExport"
-import api from "../../components/api"
-import UserNavigator from "../../components/usernavigator/UserNavigator"
+import { Festival } from "../../../types/TypesExport"
+import api from "../../../components/api"
+import UserNavigator from "../../../components/usernavigator/UserNavigator"
 
 const FestivalArtistsPage: React.FC = () => {
     const { id } = useParams()

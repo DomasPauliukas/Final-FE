@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import { Artist } from "../../types/TypesExport"
-import api from "../../components/api"
+import { Artist } from "../../../types/TypesExport"
+import api from "../../../components/api"
 import { Link } from "react-router-dom"
-import OnlyAdmin from "../../components/privateroute/OnlyAdmin"
+import OnlyAdmin from "../../../components/privateroute/OnlyAdmin"
 
 const ArtistsPage: React.FC = () => {
   const [artists, setArtists] = useState<Artist[] | null>(null)
