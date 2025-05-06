@@ -3,6 +3,7 @@ import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { Artist } from "../../types/TypesExport";
 import { useNotification } from "../../context/ToastifyContext";
+import styles from './Form.module.css'
 
 type ArtistFormProps = {
     editArtistData?: Artist
@@ -70,9 +71,9 @@ const SubmitHandler = async (event: React.FormEvent) => {
 }
 
   return (
-    <div>
+    <div className={styles.formWrapper}>
       <form onSubmit={SubmitHandler}>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="name">Name:</label>
             <input
                 type="text"
@@ -81,7 +82,7 @@ const SubmitHandler = async (event: React.FormEvent) => {
                 onChange={(event) => setName(event.target.value)}
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="country">Country:</label>
             <input
                 type="text"
@@ -90,7 +91,7 @@ const SubmitHandler = async (event: React.FormEvent) => {
                 onChange={(event) => setCountry(event.target.value)}
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="genre">Genre:</label>
             <input
                 type="text"
@@ -99,7 +100,7 @@ const SubmitHandler = async (event: React.FormEvent) => {
                 onChange={(event) => setGenre(event.target.value)}
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="image">Image URL:</label>
             <input
                 type="text"
@@ -108,7 +109,7 @@ const SubmitHandler = async (event: React.FormEvent) => {
                 onChange={(event) => setImage(event.target.value)}
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="bio">Bio:</label>
             <textarea
                 id="bio"
@@ -116,7 +117,7 @@ const SubmitHandler = async (event: React.FormEvent) => {
                 onChange={(event) => setBio(event.target.value)}
             ></textarea>
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="hits">Most popular hits:</label>
             <textarea
                 id="hits"
@@ -126,7 +127,7 @@ const SubmitHandler = async (event: React.FormEvent) => {
             />
         </div>
 
-        <button type="submit">{editArtistData ? 'Edit Artist' : 'Create Artist'}</button>
+        <button type="submit" className={styles.submitButton}>{editArtistData ? 'Edit Artist' : 'Create Artist'}</button>
       </form>
     </div>
   );

@@ -3,6 +3,8 @@ import { Artist, Schedule, Stage } from "../../types/TypesExport";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { useNotification } from "../../context/ToastifyContext";
+import styles from './Form.module.css'
+
 
 type ScheduleFormProps = {
     editScheduleData?: Schedule
@@ -91,9 +93,9 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
     }
 
   return (
-    <div>
+    <div className={styles.formWrapper}>
       <form onSubmit={submitHandler}>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="artist">Artist: </label>
             <select id="artist" name="artistId" value={artistId} onChange={(event) => setArtistId(event.target.value)} required>
                 {artist.map((artist) => (
@@ -103,7 +105,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
                 ))}
             </select>
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="stage">Stage: </label>
             <select id="stage" name="stageId" value={stageId} onChange={(event) => setStageId(event.target.value)} required>
                 {stages.map((stage) => (
@@ -113,7 +115,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
                 ))}
             </select>
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="startTime">Start Time: </label>
             <input 
                 type="text" 
@@ -125,7 +127,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
                 required 
                 />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="endTime">End Time: </label>
             <input 
                 type="text" 
@@ -137,7 +139,7 @@ const ScheduleForm: React.FC<ScheduleFormProps> = ( {editScheduleData}) => {
                 />
         </div>
 
-        <button type="submit">{editScheduleData ? 'Edit' : 'Create'}</button>
+        <button type="submit" className={styles.submitButton}>{editScheduleData ? 'Edit' : 'Create'}</button>
       </form>
     </div>
   )

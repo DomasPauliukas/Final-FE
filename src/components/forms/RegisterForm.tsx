@@ -2,6 +2,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../api"
 import { useNotification } from "../../context/ToastifyContext"
+import styles from './Form.module.css'
+
 
 const RegisterForm: React.FC = () => {
     const [name, setName] = useState('')
@@ -50,9 +52,9 @@ const RegisterHandler = async (event: React.FormEvent) => {
 
 
   return (
-    <div>
+    <div className={styles.formWrapper}>
       <form onSubmit={RegisterHandler}>
-        <div className="form-control">
+        <div className={styles.formControl}>
           <label htmlFor="name">Name: </label>
           <input
             type="text"
@@ -62,7 +64,7 @@ const RegisterHandler = async (event: React.FormEvent) => {
             required
           />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
           <label htmlFor="surname">Surname: </label>
           <input
             type="text"
@@ -72,7 +74,7 @@ const RegisterHandler = async (event: React.FormEvent) => {
             required
           />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
           <label htmlFor="age">Age: </label>
           <input
             type="number"
@@ -82,7 +84,7 @@ const RegisterHandler = async (event: React.FormEvent) => {
             required
           />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
           <label htmlFor="username">Username: </label>
           <input
             type="text"
@@ -92,7 +94,7 @@ const RegisterHandler = async (event: React.FormEvent) => {
             required
           />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
           <label htmlFor="email">Email: </label>
           <input
             type="email"
@@ -102,7 +104,7 @@ const RegisterHandler = async (event: React.FormEvent) => {
             required
           />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
           <label htmlFor="password">Password: </label>
           <input
             type="password"
@@ -113,7 +115,7 @@ const RegisterHandler = async (event: React.FormEvent) => {
             required
           />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
           <label htmlFor="confirmPassword">Confirm Password: </label>
           <input
             type="password"
@@ -123,7 +125,7 @@ const RegisterHandler = async (event: React.FormEvent) => {
             required
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit" className={styles.submitButton}>Register</button>
 
       </form>
     </div>

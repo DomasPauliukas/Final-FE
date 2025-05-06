@@ -3,6 +3,7 @@ import { Festival, Stage } from "../../types/TypesExport"
 import api from "../api"
 import { useNavigate } from "react-router-dom"
 import { useNotification } from "../../context/ToastifyContext"
+import styles from './Form.module.css'
 
 
 type StageFormProps = {
@@ -67,9 +68,9 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
         }
     }
   return (
-    <div>
+    <div className={styles.formWrapper}>
       <form onSubmit={submitHandler}>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="name">Name</label>
             <input 
                 type="text" 
@@ -79,7 +80,7 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
                 required 
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="capacity">Capacity</label>
             <input 
                 type="number" 
@@ -89,7 +90,7 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
                 required 
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="festivalId">Festival</label>
             <select 
                 id="festivalId" 
@@ -106,7 +107,7 @@ const StageForm: React.FC<StageFormProps> = ( {editStageData}) => {
             </select>
         </div>
 
-        <button type="submit">{editStageData? 'Edit' : 'Create'}</button>
+        <button type="submit" className={styles.submitButton}>{editStageData? 'Edit' : 'Create'}</button>
       </form>
 
     </div>

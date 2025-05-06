@@ -3,6 +3,7 @@ import api from "../api"
 import { useNavigate } from "react-router-dom"
 import { Festival } from "../../types/TypesExport"
 import { useNotification } from "../../context/ToastifyContext"
+import styles from './Form.module.css'
 
 type FestivalFormProps = {
     editFestivalData?: Festival
@@ -74,9 +75,9 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
     }
     
   return (
-    <div>
+    <div className={styles.formWrapper}>
       <form onSubmit={SubmitHandler}>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="name">Name: </label>
             <input 
                 type="text" 
@@ -85,7 +86,7 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
                 required 
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="location">Location: </label>
             <input 
                 type="text" 
@@ -96,7 +97,7 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
                 required
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="date">Date: </label>
             <input 
                 type="date" 
@@ -106,7 +107,7 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
                 required
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="image">Image URL: </label>
             <input 
                 type="text" 
@@ -117,7 +118,7 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
                 required
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="description">Description: </label>
             <textarea 
                 id="description" 
@@ -126,7 +127,7 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
                 required
             ></textarea>
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="regularPrice">Regular Price: </label>
             <input 
                 type="number" 
@@ -136,7 +137,7 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
                 required
             />
         </div>
-        <div className="form-control">
+        <div className={styles.formControl}>
             <label htmlFor="vipPrice">VIP Price: </label>
             <input
                 type="number" 
@@ -147,7 +148,7 @@ const FestivalForm: React.FC<FestivalFormProps> = ( {editFestivalData}) => {
             />
         </div>
 
-            <button type="submit">{editFestivalData ? 'Edit': 'Create'}</button>
+            <button type="submit" className={styles.submitButton}>{editFestivalData ? 'Edit': 'Create'}</button>
       </form>
     </div>
   )

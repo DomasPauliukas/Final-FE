@@ -3,6 +3,8 @@ import { useAuth } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import api from "../api"
 import { useNotification } from "../../context/ToastifyContext"
+import styles from './Form.module.css'
+
 
 const LoginForm: React.FC = () => {
     const { loginUser } = useAuth()
@@ -31,9 +33,9 @@ const LoginForm: React.FC = () => {
         }
     }
   return (
-    <div>
+    <div className={styles.formWrapper}>
         <form onSubmit={LoginHandler}>
-            <div className="form-control">
+            <div className={styles.formControl}>
                 <label htmlFor="email">Email: </label>
                 <input
                     type="email"
@@ -43,7 +45,7 @@ const LoginForm: React.FC = () => {
                     required
                 />
             </div>
-            <div className="form-control">
+            <div className={styles.formControl}>
                 <label htmlFor="password">Password: </label>
                 <input
                     type="password"
@@ -53,7 +55,7 @@ const LoginForm: React.FC = () => {
                     required
                 />
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" className={styles.submitButton}>Login</button>
         </form>
     </div>
   )
