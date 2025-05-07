@@ -50,8 +50,8 @@ const ArtistItem: React.FC = () => {
 
         <OnlyAdmin>
             <div className={styles.actions}>
-                <Link to={`/edit-artist/${id}`}>Edit</Link>
-                <button onClick={() => deleteArtist(id ?? '')}>Delete</button>
+                <Link to={`/edit-artist/${id}`} className={styles.btnLink}>Edit</Link>
+                <button onClick={() => deleteArtist(id ?? '')} className={styles.deleteBtn}>Delete</button>
             </div>
         </OnlyAdmin>
             

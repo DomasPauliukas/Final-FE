@@ -23,11 +23,13 @@ useEffect(() => {
 
   return (
     <div>
-      <h1>Festival Page</h1>
-      
-      <OnlyAdmin>
-        <Link to="/create-festival" className={styles.btnLink}>+ Create New Festival</Link>
-      </OnlyAdmin>
+      <div className={styles.header}>
+        <h1>Festival Page</h1>
+        
+        <OnlyAdmin>
+          <Link to="/create-festival" className={styles.btnLink}>+ Create New Festival</Link>
+        </OnlyAdmin>
+      </div>
       
       <div className={styles.festivalGrid}>
           {festivals.map((festival) => (

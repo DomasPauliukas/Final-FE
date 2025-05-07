@@ -26,17 +26,19 @@ if (!artists) {
     <div>
         <div className={styles.header}>
           <h1>Artists</h1>
+
+        <OnlyAdmin>
+          <Link to="/create-artist" className={styles.btnLink}>+ Create New Artist</Link>
+        </OnlyAdmin>
+
           <input
               type="text"
               placeholder="Search artist by name..."
               value={searchArtist}
               onChange={(event) => setSearchArtist(event.target.value)}
-              className={styles.searchInput}            />
+              className={styles.searchInput}/>
         </div>
 
-        <OnlyAdmin>
-          <Link to="/create-artist" className={styles.btnLink}>+ Create New Artist</Link>
-        </OnlyAdmin>
 
         <div className={styles.artistGrid}>
             {artists

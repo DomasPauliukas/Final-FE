@@ -87,8 +87,8 @@ return (
       
       <OnlyAdmin>
         <div className={styles.actions}>
-            <Link to={`/edit-festival/${id}`}>Edit</Link>
-            <button onClick={() => deleteFestival(id ?? '')}>Delete</button>
+            <Link to={`/edit-festival/${id}`} className={styles.btnLink}>Edit</Link>
+            <button onClick={() => deleteFestival(id ?? '')} className={styles.deleteBtn}>Delete</button>
         </div>
       </OnlyAdmin>
 

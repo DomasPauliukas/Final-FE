@@ -62,3 +62,37 @@
     margin: 0 0.5rem;
   }
   
+  .btnLink {
+    display: inline-block;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #646cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btnLink:hover {
+    background-color: #7dd7c2;
+  }
+  
+  .deleteBtn {
+    padding: 0.5rem 1rem;
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    line-height: 1.5;
+  }
+  
+  .deleteBtn:hover {
+    background-color: #ff1a1a;
+  }
+  
+  .deleteBtn:focus {
+    outline: none;
+  }
