@@ -6,11 +6,6 @@ import styles from "./FestivalSchedulePage.module.css"
 
 
 const timeOrder: { [key: string]: number } = {
-  "1 AM": 1,
-  "2 AM": 2,
-  "3 AM": 3,
-  "4 AM": 4,
-  "5 AM": 5,
   "6 AM": 6,
   "7 AM": 7,
   "8 AM": 8,
@@ -30,6 +25,11 @@ const timeOrder: { [key: string]: number } = {
   "10 PM": 22,
   "11 PM": 23,
   "12 AM": 24,
+  "1 AM": 25,
+  "2 AM": 26,
+  "3 AM": 27,
+  "4 AM": 28,
+  "5 AM": 29,
 }
 
 const FestivalSchedulePage: React.FC = () => {

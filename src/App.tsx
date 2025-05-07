@@ -68,6 +68,8 @@ function App() {
           <Route path='/create-schedule' element={<CreateSchedule />}/>
           <Route path='/edit-schedule/:id' element={<EditSchedule />}/>
           <Route path='/tickets' element={<AllTicketsPage />} />
+          <Route path='/schedules' element={<SchedulesPage />}/>
+          <Route path='/schedules/:id' element={<ScheduleItem />}/>
         </Route>
 
         <Route path='/festivals' element={<FestivalsPage />}/>
@@ -81,8 +83,6 @@ function App() {
         <Route path='/stages' element={<StagesPage />} />
         <Route path='/stages/:id' element={<StageItem />}/>
 
-        <Route path='/schedules' element={<SchedulesPage />}/>
-        <Route path='/schedules/:id' element={<ScheduleItem />}/>
       </Routes>
     </BrowserRouter>
 
