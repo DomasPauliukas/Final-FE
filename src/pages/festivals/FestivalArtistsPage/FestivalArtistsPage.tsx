@@ -37,27 +37,25 @@ const FestivalArtistsPage: React.FC = () => {
 
 return (
   <div className={styles.artistsContainer}>
-    <h2>Artists at {festival.name}</h2>
+      <h2>Artists at {festival.name}</h2>
     
-    <Link to={`/festivals/${id}`} className={styles.backLink}>Back to Festival</Link>
+      <Link to={`/festivals/${id}`} className={styles.backLink}>Back to Festival</Link>
 
-    <div>
-      {festival.artists.map((artist) => (
-        <div key={artist._id} className={styles.artistCard}>
-          <img src={artist.image} alt={artist.name} className={styles.artistImage} />
-          <div className={styles.artistInfo}>
-            <h3 className={styles.artistName}>
-              <Link to={`/artists/${artist._id}`} className={styles.artistLink}>{artist.name}</Link>
-            </h3>
-            <p><strong>Genre:</strong> {artist.genre}</p>
-            <p>{artist.bio}</p>
-            <p><strong>Country:</strong> {artist.country}</p>
+      <div>
+        {festival.artists.map((artist) => (
+          <div key={artist._id} className={styles.artistCard}>
+            <img src={artist.image} alt={artist.name} className={styles.artistImage} />
+            <div className={styles.artistInfo}>
+              <h3 className={styles.artistName}>
+                <Link to={`/artists/${artist._id}`} className={styles.artistLink}>{artist.name}</Link>
+              </h3>
+              <p><strong>Genre:</strong> {artist.genre}</p>
+              <p>{artist.bio}</p>
+              <p><strong>Country:</strong> {artist.country}</p>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
-
-        <UserNavigator />
+        ))}
+      </div>
     </div>
   )
 }
