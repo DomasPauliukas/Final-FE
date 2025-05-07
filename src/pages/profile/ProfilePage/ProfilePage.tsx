@@ -2,6 +2,7 @@ import { Navigate, NavLink } from "react-router-dom"
 import { useAuth } from "../../../context/AuthContext"
 import { useEffect, useState } from "react"
 import api from "../../../components/api"
+import styles from "./ProfilePage.module.css"
 
 interface LoggedUser {
     name: string
@@ -51,16 +52,22 @@ const ProfilePage: React.FC = () => {
     } 
     
     return (
-    <div>
-      <h1>Profile Page</h1>
-        <p>Name: {loggedUser.name}</p>
-        <p>Surname: {loggedUser.surname}</p>
-        <p>Age: {loggedUser.age}</p>
-        <p>Username: {loggedUser.username}</p>
-        <p>Email: {loggedUser.email}</p>
-        <p>Role: {loggedUser.role}</p>
-        <button onClick={logoutUser}>Logout</button>
-        <NavLink to={`/profile-edit`}>Edit</NavLink>
+    <div className={styles.profileContainer}>
+      <h1 className={styles.profileTitle}>Profile Page</h1>
+      
+      <div className={styles.profileInfo}>
+        <p><strong>Name:</strong> {loggedUser.name}</p>
+        <p><strong>Surname:</strong> {loggedUser.surname}</p>
+        <p><strong>Age:</strong> {loggedUser.age}</p>
+        <p><strong>Username:</strong> {loggedUser.username}</p>
+        <p><strong>Email:</strong> {loggedUser.email}</p>
+        <p><strong>Role:</strong> {loggedUser.role}</p>
+      </div>
+
+      <div className={styles.actions}>
+        <button onClick={logoutUser} className={styles.deleteBtn}>Logout</button>
+        <NavLink to={`/profile-edit`} className={styles.btnLink}>Edit</NavLink>
+      </div>
     </div>
   )
 }

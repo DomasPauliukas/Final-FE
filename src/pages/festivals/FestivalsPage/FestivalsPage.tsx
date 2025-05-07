@@ -35,7 +35,7 @@ useEffect(() => {
           {festivals.map((festival) => (
             <div key={festival._id} className={styles.festivalCard}>
               <h2>{festival.name}</h2>
-              <p>{festival.description}</p>
+              <p style={{marginBottom: '20px'}}>{festival.description}</p>
               <p>Date: {festival.date}</p>
               <p>Location: {festival.location}</p>
               <div className={styles.imageContainer}>

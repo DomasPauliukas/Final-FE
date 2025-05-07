@@ -3,6 +3,7 @@ import { User } from "../../types/TypesExport"
 import api from "../../components/api"
 import { useNotification } from "../../context/ToastifyContext"
 import { Link } from "react-router-dom"
+import styles from "./UsersPage.module.css"
 
 const UsersPage: React.FC = () => {
     const [users, setUsers] = useState<User[] | null>(null)
@@ -44,19 +45,21 @@ const UsersPage: React.FC = () => {
     }
 
     return (
-      <div>
-          <h1>Users Page</h1>
+      <div className={styles.usersContainer}>
+          <h1 className={styles.pageTitle}>Users Page</h1>
+          
           {users && users.length > 0 ? (
-            <div>
+            <div className={styles.usersList}>
               {users.map((user) => (
-                <div key={user._id} style={{ marginBottom: "30px", border: "1px solid #ccc", padding: "15px" }}>
-                  <h3>
-                    {user.username}{" "}
-                    <button onClick={() => deleteUser(user._id ?? "")}>Delete User</button>
-                    <Link to={`/edit-user/${user._id}`}>
-                      <button>Edit User</button>
-                    </Link>
-                  </h3>
+                <div key={user._id} className={styles.userCard}>
+                  <div className={styles.cardHeader}>
+                    <h3>{user.username}</h3>
+                    <div className={styles.actions}>
+                      <button onClick={() => deleteUser(user._id ?? "")} className={styles.deleteBtn}>Delete User</button>
+                      <Link to={`/edit-user/${user._id}`} className={styles.btnLink}>Edit User</Link>
+                    </div>
+                  </div>
+
                   <p><strong>Name:</strong> {user.name}</p>
                   <p><strong>Surname:</strong> {user.surname}</p>
                   <p><strong>Email:</strong> {user.email}</p>
@@ -65,18 +68,17 @@ const UsersPage: React.FC = () => {
 
           {user.tickets && user.tickets.length > 0 && (
             <>
-              <h4>Tickets: </h4>
-              <ul>
+              <h4 className={styles.sectionTitle}>Tickets:</h4>
+              <ul className={styles.ticketList}>
                 {user.tickets.map((ticket) => (
                   <li key={ticket._id}>
                     <strong>Festival:</strong> {ticket.festivalId?.name} |{" "}
                     <strong>Type:</strong> {ticket.ticketType} |{" "}
-                    <strong>Qty:</strong> {ticket.quantity} |{" "}
+                    <strong>Quantity:</strong> {ticket.quantity} |{" "}
                     <strong>Price:</strong> €{ticket.price}
                     <button
                       onClick={() => deleteTicket(ticket._id)}
-                      style={{ marginLeft: "10px", color: "red" }}
-                    >
+                      className={styles.refundBtn}>
                       Refund
                     </button>
                   </li>

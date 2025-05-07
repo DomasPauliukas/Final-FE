@@ -1,0 +1,56 @@
+.profileContainer {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  .profileTitle {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .profileInfo p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .btnLink {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #646cff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btnLink:hover {
+    background-color: #535bf2;
+  }
+  
+  .deleteBtn {
+    padding: 0.5rem 1rem;
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .deleteBtn:hover {
+    background-color: #ff1a1a;
+  }
+  
