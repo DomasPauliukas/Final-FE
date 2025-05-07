@@ -1,0 +1,59 @@
+.scheduleContainer {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: var(--btn-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scheduleHeader {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .backLink {
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .backLink:hover {
+    color: var(--secondary-color);
+  }
+  
+  .stageSection {
+    margin-bottom: 2rem;
+  }
+  
+  .stageTitle {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .scheduleList {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .scheduleItem {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--btn-radius);
+    margin-bottom: 0.5rem;
+    background-color: #fff;
+  }
+  
+  .scheduleItem a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin-left: 0.5rem;
+  }
+  
+  .scheduleItem a:hover {
+    color: var(--secondary-color);
+  }
+  

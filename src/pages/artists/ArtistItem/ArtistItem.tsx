@@ -4,6 +4,8 @@ import { Artist, Festival } from "../../../types/TypesExport";
 import api from "../../../components/api";
 import OnlyAdmin from "../../../components/privateroute/OnlyAdmin";
 import { useNotification } from "../../../context/ToastifyContext";
+import styles from "./ArtistItem.module.css";
+
 
 const ArtistItem: React.FC = () => {
     const { id } = useParams()
@@ -43,22 +45,26 @@ const ArtistItem: React.FC = () => {
     }
 
   return (
-    <div>
+    <div className={styles.artistDetailContainer}>
         <h1>{artist.name}</h1>
+
         <OnlyAdmin>
-            <div>
+            <div className={styles.actions}>
                 <Link to={`/edit-artist/${id}`}>Edit</Link>
                 <button onClick={() => deleteArtist(id ?? '')}>Delete</button>
             </div>
         </OnlyAdmin>
             
-        <img src={artist.image} alt={artist.name} style={{ width: '200px', height: 'auto' }} />
-        <h2>{artist.name} ({artist.country})</h2>
-        <p>{artist.genre}</p>
-        <p>{artist.bio}</p>
+        <img src={artist.image} alt={artist.name} className={styles.artistImage} />
+        
+        <div className={styles.artistInfo}>
+            <h2>{artist.name} ({artist.country})</h2>
+            <p>{artist.genre}</p>
+            <p>{artist.bio}</p>
+        </div>
 
-        <h2>Most popular hits:</h2>
-        <ul>
+        <h2 className={styles.sectionTitle}>Most popular hits:</h2>
+        <ul className={styles.hitsList}>
             {Array.isArray(artist.hits) &&
                 artist.hits.map((hit, index) => (
                 <li key={index}>
@@ -71,14 +77,14 @@ const ArtistItem: React.FC = () => {
 
         {festivals && festivals.length > 0 ? (
             <div>
-                <h2>Performing in:</h2>
-                <ul>
+                <h2 className={styles.sectionTitle}>Performing in:</h2>
+                <u className={styles.festivalList}>
                     {festivals.map((festival) => (
                         <li key={festival._id}>
                             <Link to={`/festivals/${festival._id}`}>{festival.name} ({festival.date})</Link>
                         </li>
                     ))}
-                </ul>
+                </u>
             </div>
         ) : (
             <p>This artist is not performing at festivals yet. Check it later!</p>

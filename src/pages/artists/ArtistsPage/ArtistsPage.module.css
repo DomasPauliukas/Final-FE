@@ -1,12 +1,27 @@
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.searchInput {
+  padding: 0.5rem;
+  width: 300px;
+  max-width: 90%;
+  margin: 1rem auto 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
 
 .artistGrid {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: space-between;
-  }
+}
   
-  .artistCard {
+.artistCard {
     flex: 1 1 calc(33.333% - 1rem);
     background-color: #f9f9f9;
     border: 1px solid #ddd;
@@ -14,14 +29,15 @@
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     min-width: 250px;
-  }
+    text-align: center;
+}
   
-  .stageCard h2 a {
+.stageCard h2 a {
     color: #333;
     text-decoration: none;
-  }
+}
   
-  .btnLink {
+.btnLink {
     display: inline-block;
     margin-bottom: 1rem;
     padding: 0.5rem 1rem;
@@ -31,11 +47,18 @@
     border-radius: 4px;
     margin-right: 15px;
 
-  }
+}
 
-  .artistImage {
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.artistImage {
     width: 200px;
     height: 200px;
     object-fit: cover;
     border-radius: 8px;
-  }
+}

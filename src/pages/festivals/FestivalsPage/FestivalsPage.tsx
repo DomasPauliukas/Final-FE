@@ -24,6 +24,7 @@ useEffect(() => {
   return (
     <div>
       <h1>Festival Page</h1>
+      
       <OnlyAdmin>
         <Link to="/create-festival" className={styles.btnLink}>+ Create New Festival</Link>
       </OnlyAdmin>
@@ -35,9 +36,11 @@ useEffect(() => {
               <p>{festival.description}</p>
               <p>Date: {festival.date}</p>
               <p>Location: {festival.location}</p>
-              <img src={festival.image} alt={festival.name} className={styles.festivalImage} />
+              <div className={styles.imageContainer}>
+                <img src={festival.image} alt={festival.name} className={styles.festivalImage} />
+              </div>
               <div>
-              <Link to={`/festivals/${festival._id}`}>View Details</Link>
+              <Link to={`/festivals/${festival._id}`} style={{fontSize: "20px"}}>View Details</Link>
               </div>
             </div>
           ))}
