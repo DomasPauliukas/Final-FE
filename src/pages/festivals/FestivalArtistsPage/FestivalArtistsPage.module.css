@@ -1,0 +1,68 @@
+.artistsContainer {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: var(--btn-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .artistCard {
+    display: flex;
+    margin-bottom: 2rem;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+    border-radius: var(--btn-radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .artistImage {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .artistInfo {
+    flex: 1;
+  }
+  
+  .artistName {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .artistLink {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+  }
+  
+  .artistLink:hover {
+    color: var(--secondary-color);
+  }
+  
+  .artistDetails {
+    margin-top: 1rem;
+  }
+  
+  .artistDetails p {
+    margin: 0.5rem 0;
+  }
+  
+  .backLink {
+    margin-top: 10px;
+    color: var(--primary-color);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .backLink:hover {
+    color: var(--secondary-color);
+  }
+  

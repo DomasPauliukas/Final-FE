@@ -27,18 +27,21 @@ const StagesPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Stages</h1>
-      <OnlyAdmin>
-        <Link to="/create-stage" className={styles.btnLink}>+ Create New Stage</Link>
-      </OnlyAdmin>
+      <div className={styles.header}>
+        <h1>Stages</h1>
+        
+        <OnlyAdmin>
+          <Link to="/create-stage" className={styles.btnLink}>+ Create New Stage</Link>
+        </OnlyAdmin>
 
-      <input
-        type="text"
-        placeholder="Search by festival name..."
-        value={searchByFestival}
-        onChange={(event) => setSearchByFestival(event.target.value)}
-        className={styles.searchInput}
-      />
+        <input
+          type="text"
+          placeholder="Search by festival name..."
+          value={searchByFestival}
+          onChange={(event) => setSearchByFestival(event.target.value)}
+          className={styles.searchInput}
+        />
+      </div>
 
       <div className={styles.stageGrid}>
         {filteredStages.length === 0 && <p>No stages found for the given festival name.</p>}

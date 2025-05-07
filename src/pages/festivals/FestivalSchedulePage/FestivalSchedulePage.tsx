@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom"
 import api from "../../../components/api"
 import { Festival, Schedule, Stage } from "../../../types/TypesExport"
 import UserNavigator from "../../../components/usernavigator/UserNavigator"
+import styles from "./FestivalSchedulePage.module.css"
+
 
 const timeOrder: { [key: string]: number } = {
   "12 AM": 0,
@@ -61,33 +63,42 @@ const FestivalSchedulePage: React.FC = () => {
   }
 
   return (
-<div>
-      <h2>{festival ? festival.name + ' Schedule' : 'Festival Schedule'}</h2>
-      <Link to={`/festivals/${id}`}>Back to Festival</Link>
+    <div className={styles.scheduleContainer}>
 
+      <h2 className={styles.scheduleHeader}>
+        {festival ? `${festival.name} Schedule` : 'Festival Schedule'}
+      </h2>
+      
+      <div style={{textAlign: "center"}}>
+        <Link to={`/festivals/${id}`} className={styles.backLink}>
+          Back to Festival
+        </Link>
+      </div>
+  
       {stages.map((stage) => (
-        <div key={stage._id}>
-          <h3>{stage.name}</h3>
-            {schedules.length > 0 ? (
-              <ul>
+        <div key={stage._id} className={styles.stageSection}>
+          <h3 className={styles.stageTitle}>{stage.name}</h3>
+          {schedules.length > 0 ? (
+            <ul className={styles.scheduleList}>
               {schedules
                 .filter((schedule) => schedule.stageId._id === stage._id)
                 .sort((a, b) => timeOrder[a.startTime] - timeOrder[b.startTime])
                 .map((schedule) => (
-                  <li key={schedule._id}>
-                    <strong>{schedule.startTime} - {schedule.endTime} | </strong>
+                  <li key={schedule._id} className={styles.scheduleItem}>
+                    <strong>
+                      {schedule.startTime} - {schedule.endTime} |
+                    </strong>{' '}
                     {schedule.artistId.name} ({schedule.artistId.country})
-                    <span> <Link to={`/edit-schedule/${schedule._id}`}>Edit</Link></span>
+                    <Link to={`/edit-schedule/${schedule._id}`}>Edit</Link>
                   </li>
                 ))}
             </ul>
-            ) : (
-              <p>No schedules for this stage yet. All the information will be updated soon!</p>
-            )}
+          ) : (
+            <p>No schedules for this stage yet. All the information will be updated soon!</p>
+          )}
         </div>
       ))}
-
-      <UserNavigator />
+  
     </div>
   )
 }

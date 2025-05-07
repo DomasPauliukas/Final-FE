@@ -27,18 +27,21 @@ const SchedulesPage: React.FC = () => {
 
   return (
     <div>
-      <h1>Schedules</h1>
-      <OnlyAdmin>
-        <Link to="/create-schedule" className={styles.btnLink}>+ Create New Schedule</Link>
-      </OnlyAdmin>
+      <div className={styles.header}>
+        <h1>Schedules</h1>
+        
+        <OnlyAdmin>
+          <Link to="/create-schedule" className={styles.btnLink}>+ Create New Schedule</Link>
+        </OnlyAdmin>
 
-      <input
-        type="text"
-        placeholder="Search by festival name..."
-        value={searchByFestival}
-        onChange={(event) => setSearchByFestival(event.target.value)}
-        className={styles.searchInput}
-      />
+        <input
+          type="text"
+          placeholder="Search by festival name..."
+          value={searchByFestival}
+          onChange={(event) => setSearchByFestival(event.target.value)}
+          className={styles.searchInput}
+        />
+      </div>
 
       <div className={styles.scheduleGrid}>
         {filteredSchedules.length === 0 && <p>No schedules found for the given festival name.</p>}

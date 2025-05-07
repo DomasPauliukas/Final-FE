@@ -6,6 +6,8 @@ import UserNavigator from "../../../components/usernavigator/UserNavigator"
 import OnlyAdmin from "../../../components/privateroute/OnlyAdmin"
 import { useAuth } from "../../../context/AuthContext"
 import { useNotification } from "../../../context/ToastifyContext"
+import styles from "./FestivalItem.module.css"
+
 
 const FestivalItem: React.FC = () => {
 
@@ -79,25 +81,26 @@ const FestivalItem: React.FC = () => {
       }
   }
 
-    return (
-    <div>
-      <h1>{festival.name}</h1>
+return (
+    <div className={styles.festivalContainer}>
+      <h1 className={styles.festivalHeader}>{festival.name}</h1>
+      
       <OnlyAdmin>
-        <div>
+        <div className={styles.actions}>
             <Link to={`/edit-festival/${id}`}>Edit</Link>
             <button onClick={() => deleteFestival(id ?? '')}>Delete</button>
         </div>
       </OnlyAdmin>
 
-      <img src={festival.image} alt={festival.name} width="400" />
-      <p><strong>Location:</strong> {festival.location}</p>
-      <p>
-        <strong>Date: </strong>
-        {festival.date}
-      </p>
-      <p>{festival.description}</p>
+      <img src={festival.image} alt={festival.name} className={styles.festivalImage} />
+      
+      <div className={styles.details}>
+        <p><strong>Location:</strong> {festival.location}</p>
+        <p><strong>Date: </strong>{festival.date}</p>
+        <p>{festival.description}</p>
+      </div>
 
-      <div style={{ marginTop: "20px" }}>
+      <div className={styles.actions}>
         <Link to={`/festivals/${id}/artists`}>
           <button>View All Artists</button>
         </Link>
@@ -107,13 +110,13 @@ const FestivalItem: React.FC = () => {
       </div>
 
       {!showTicketForm && user && (
-          <button onClick={() => setShowTicketForm(true)} style={{ marginTop: "20px" }}>
-              Buy Ticket
-          </button>
+        <div className={styles.actions}>
+            <button onClick={() => setShowTicketForm(true)}>Buy Ticket</button>
+        </div>
       )}
 
       {showTicketForm && (
-          <form onSubmit={submitHandler} style={{ marginTop: "20px" }}>
+          <form onSubmit={submitHandler} className={styles.ticketForm}>
               <div>
                   <label>Ticket Type: </label>
                   <select value={ticketType} onChange={(event) => setTicketType(event.target.value)}>
@@ -141,8 +144,6 @@ const FestivalItem: React.FC = () => {
               <button type="submit">Buy Ticket</button>
           </form>
       )}
-
-
         <UserNavigator />
     </div>
   )

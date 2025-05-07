@@ -4,6 +4,8 @@ import api from "../../../components/api";
 import OnlyAdmin from "../../../components/privateroute/OnlyAdmin";
 import { useNotification } from "../../../context/ToastifyContext";
 import { Stage } from "../../../types/TypesExport";
+import styles from "./StageItem.module.css";
+
 
 const StageItem: React.FC = () => {
     const { id } = useParams()
@@ -41,13 +43,14 @@ const StageItem: React.FC = () => {
         return <div>Loading...</div>
     }
   return (
-    <div className="stage-item">
-
+    <div className={styles.stageDetails}>
       <h3>{stage.name}</h3>
       
       <OnlyAdmin>
-        <Link to={`/edit-stage/${stage._id}`}>Edit</Link>
-        <button onClick={() => deleteStage(id ?? '')}>Delete</button>
+        <div className={styles.adminControls}>
+            <Link to={`/edit-stage/${stage._id}`} className={styles.btnLink}>Edit</Link>
+            <button onClick={() => deleteStage(id ?? '')} className={styles.deleteBtn}>Delete</button>
+        </div>
       </OnlyAdmin>
 
         <p>Capacity: {stage.capacity}</p>

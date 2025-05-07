@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom"
 import { Festival } from "../../../types/TypesExport"
 import api from "../../../components/api"
 import UserNavigator from "../../../components/usernavigator/UserNavigator"
+import styles from "./FestivalArtistsPage.module.css"
+
 
 const FestivalArtistsPage: React.FC = () => {
     const { id } = useParams()
@@ -33,22 +35,27 @@ const FestivalArtistsPage: React.FC = () => {
         )
     }
 
-  return (
-    <div>
-      <h2>Artists at {festival.name}</h2>
-      <Link to={`/festivals/${id}`}>Back to Festival</Link>
+return (
+  <div className={styles.artistsContainer}>
+    <h2>Artists at {festival.name}</h2>
+    
+    <Link to={`/festivals/${id}`} className={styles.backLink}>Back to Festival</Link>
 
-      <div>
-        {festival.artists.map((artist) => (
-          <div key={artist._id} style={{ marginBottom: "20px" }}>
-            <img src={artist.image} alt={artist.name} style={{ width: '200px', height: 'auto' }} />
-            <h3><Link to={`/artists/${artist._id}`}>{artist.name}</Link></h3>
+    <div>
+      {festival.artists.map((artist) => (
+        <div key={artist._id} className={styles.artistCard}>
+          <img src={artist.image} alt={artist.name} className={styles.artistImage} />
+          <div className={styles.artistInfo}>
+            <h3 className={styles.artistName}>
+              <Link to={`/artists/${artist._id}`} className={styles.artistLink}>{artist.name}</Link>
+            </h3>
             <p><strong>Genre:</strong> {artist.genre}</p>
             <p>{artist.bio}</p>
             <p><strong>Country:</strong> {artist.country}</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+    </div>
 
         <UserNavigator />
     </div>
