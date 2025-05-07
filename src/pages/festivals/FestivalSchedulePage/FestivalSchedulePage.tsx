@@ -2,12 +2,10 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import api from "../../../components/api"
 import { Festival, Schedule, Stage } from "../../../types/TypesExport"
-import UserNavigator from "../../../components/usernavigator/UserNavigator"
 import styles from "./FestivalSchedulePage.module.css"
 
 
 const timeOrder: { [key: string]: number } = {
-  "12 AM": 0,
   "1 AM": 1,
   "2 AM": 2,
   "3 AM": 3,
@@ -31,6 +29,7 @@ const timeOrder: { [key: string]: number } = {
   "9 PM": 21,
   "10 PM": 22,
   "11 PM": 23,
+  "12 AM": 24,
 }
 
 const FestivalSchedulePage: React.FC = () => {
