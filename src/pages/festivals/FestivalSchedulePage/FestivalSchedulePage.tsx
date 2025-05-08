@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom"
 import api from "../../../components/api"
 import { Festival, Schedule, Stage } from "../../../types/TypesExport"
 import styles from "./FestivalSchedulePage.module.css"
+import { useAuth } from "../../../context/AuthContext"
 
 
 const timeOrder: { [key: string]: number } = {
@@ -33,6 +34,7 @@ const timeOrder: { [key: string]: number } = {
 }
 
 const FestivalSchedulePage: React.FC = () => {
+  const { user } = useAuth()
   const { id } = useParams()
   const [ schedules, setSchedules ] = useState<Schedule[]>([])
   const [ stages, setStages ] = useState<Stage[]>([])
@@ -88,7 +90,9 @@ const FestivalSchedulePage: React.FC = () => {
                       {schedule.startTime} - {schedule.endTime} |
                     </strong>{' '}
                     {schedule.artistId.name} ({schedule.artistId.country})
-                    <Link to={`/edit-schedule/${schedule._id}`}>Edit</Link>
+                    {user && user.role === "ADMIN" && (
+                      <Link to={`/edit-schedule/${schedule._id}`}>Edit</Link>
+                    )}
                   </li>
                 ))}
             </ul>
