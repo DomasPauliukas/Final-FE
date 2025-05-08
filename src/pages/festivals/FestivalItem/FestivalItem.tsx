@@ -72,13 +72,12 @@ const FestivalItem: React.FC = () => {
 
       try {
           await api.post('/tickets/buy', newTicket);
-          alert("Ticket purchased successfully!");
+          showSuccess("Ticket purchased successfully")
           setShowTicketForm(false)
           navigate('/my-festivals')
       } catch (error) {
           console.error("Error buying ticket", error);
-          alert("Failed to purchase ticket");
-      }
+          showError("Error buying ticket")}
   }
 
 return (
