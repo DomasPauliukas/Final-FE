@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
       <section className={styles.section}>
         <h2>Featured Artists</h2>
         <div className={styles.cardGrid}>
-          {artists.slice(0, 4).map((artist) => (
+          {artists.slice(0, 5).map((artist) => (
             <div key={artist._id} className={styles.card}>
               <img src={artist.image} alt={artist.name} />
               <h3>{artist.name}</h3>
