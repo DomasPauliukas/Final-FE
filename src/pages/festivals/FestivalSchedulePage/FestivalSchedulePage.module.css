@@ -56,4 +56,67 @@
   .scheduleItem a:hover {
     color: var(--secondary-color);
   }
+
+  @media (max-width: 1024px) {
+    .scheduleContainer {
+      padding: 1.5rem;
+    }
+  
+    .scheduleHeader {
+      font-size: 1.5rem;
+    }
+  
+    .stageTitle {
+      font-size: 1.1rem;
+    }
+  
+    .scheduleItem {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .scheduleContainer {
+      max-width: 90%;
+      padding: 1rem;
+    }
+  
+    .scheduleHeader {
+      font-size: 1.25rem;
+    }
+  
+    .stageTitle {
+      font-size: 1rem;
+    }
+  
+    .scheduleItem {
+      font-size: 0.85rem;
+    }
+  
+    .backLink {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .scheduleContainer {
+      padding: 1rem;
+    }
+  
+    .scheduleHeader {
+      font-size: 1.1rem;
+    }
+  
+    .stageTitle {
+      font-size: 0.9rem;
+    }
+  
+    .scheduleItem {
+      font-size: 0.8rem;
+    }
+  
+    .backLink {
+      font-size: 0.8rem;
+    }
+  }
   

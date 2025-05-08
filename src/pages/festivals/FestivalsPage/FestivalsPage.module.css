@@ -56,3 +56,44 @@
     border-radius: 8px;
     
   }
+
+  @media (max-width: 1024px) {
+    .festivalCard {
+      flex: 1 1 calc(50% - 1rem);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .festivalCard {
+      flex: 1 1 100%;
+    }
+  
+    .festivalImage {
+      width: 150px;
+      height: 150px;
+    }
+  
+    .header h1 {
+      font-size: 2rem;
+    }
+  
+    .btnLink {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .header h1 {
+      font-size: 1.75rem;
+    }
+  
+    .festivalImage {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .btnLink {
+      font-size: 0.9rem;
+    }
+  }

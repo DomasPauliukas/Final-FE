@@ -64,3 +64,72 @@
     object-fit: cover;
     border-radius: 8px;
 }
+
+@media (max-width: 1024px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .searchInput {
+    max-width: 100%;
+  }
+
+  .artistGrid {
+    gap: 1rem;
+  }
+
+  .artistCard {
+    flex: 1 1 calc(33.333% - 1rem);
+  }
+
+  .artistImage {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+
+  .searchInput {
+    max-width: 100%;
+  }
+
+  .artistGrid {
+    gap: 1rem;
+  }
+
+  .artistCard {
+    flex: 1 1 calc(50% - 1rem);
+  }
+
+  .artistImage {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.5rem;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .artistGrid {
+    gap: 1rem;
+  }
+
+  .artistCard {
+    flex: 1 1 100%;
+  }
+
+  .artistImage {
+    width: 120px;
+    height: 120px;
+  }
+}
